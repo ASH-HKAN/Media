@@ -5,23 +5,12 @@
       <v-btn class="mt-3" text color="" outlined>
         Get New soundcloud Accounts
       </v-btn>
-      <v-list>
-        <h4 class="mt-6 ml-5 white--text">For You</h4>
-        <v-list-item-group v-model="selectItem" color="orange">
-          <v-list-item v-for="(item, i) in items" :key="i" active-class="border">
-            <v-list-item-icon>
-              <v-icon v-text="item.icon"></v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title v-text="item.text"></v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-      <v-divider class="mx-20"></v-divider>
-      <h4 class="mt-6 ml-5 white--text">Collections</h4>
-      <v-list-item-group>
-        <v-list-item v-for="(item, i) in collections" :key="i" active-class="border">
+    </div>
+
+    <h4 class="mt-6 ml-5 white--text">For You</h4>
+    <v-list flat  dense class="mt-5">
+      <v-list-item-group v-model="selectItem" color="orange">
+        <v-list-item v-for="(item, i) in items" :key="i" active-class="border">
           <v-list-item-icon>
             <v-icon v-text="item.icon"></v-icon>
           </v-list-item-icon>
@@ -30,7 +19,20 @@
           </v-list-item-content>
         </v-list-item>
       </v-list-item-group>
-    </div>
+    </v-list>
+    
+    <v-divider class="mx-20"></v-divider>
+    <h4 class="mt-6 ml-5 white--text">Collections</h4>
+    <v-list-item-group>
+      <v-list-item v-for="(item, i) in collections" :key="i" active-class="border">
+        <v-list-item-icon>
+          <v-icon v-text="item.icon"></v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title v-text="item.text"></v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list-item-group>
   </v-navigation-drawer>
 </template>
 
