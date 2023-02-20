@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import chatgpt from "../components/chatgpt";
-import test from "../components/test";
+import ForAndBackWard from "../components/ForAndBackWard.vue";
 
 
 Vue.use(VueRouter)
@@ -23,15 +22,9 @@ const routes = [
   },
 
   {
-    path: '/chatgpt',
-    name: 'chat',
-    component: chatgpt
-  },
-
-  {
-    path: '/test',
-    name: 'test',
-    component: test
+    path: '/demo',
+    name: 'demo',
+    component: ForAndBackWard
   },
 
 
