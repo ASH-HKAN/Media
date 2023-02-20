@@ -46,10 +46,9 @@ export default {
       currentTime: 0,
       tracks: [
         {
-          title: "Sample Track 1",
-          duration: 280,
-          audioSrc:
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          title: "Eminem",
+          duration: 680,
+          audioSrc: "/E.mp3",
         },
         {
           title: "Sample Track 2",
@@ -91,11 +90,21 @@ export default {
     },
 
     backward() {
-      this.currentTime = this.currentTime - 5;
+      if (this.isPlaying) {
+        this.currentTime -= 5;
+        this.audioElement.currentTime = this.currentTime;
+      } else {
+        this.currentTime -= 5;
+      }
     },
 
     forward() {
-      this.currentTime = this.currentTime + 5;
+      if (this.isPlaying) {
+        this.currentTime += 5;
+        this.audioElement.currentTime = this.currentTime;
+      } else {
+        this.currentTime += 5;
+      }
     },
 
     seek() {
