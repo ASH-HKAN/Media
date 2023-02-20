@@ -1,16 +1,26 @@
 <template>
-  <v-app id="inspire" :style="{ background: $vuetify.theme.themes.dark.background }">
+  <v-app
+    id="inspire"
+    :style="{ background: $vuetify.theme.themes.dark.background }"
+  >
     <SideBar />
     <v-container>
       <v-app-bar color="rgba(0,0,0,0)" flat class="mt-4">
-        <v-row style="position: relative;">
-          <v-col cols='12' sm="3">
+        <v-row style="position: relative">
+          <v-col cols="12" sm="3">
             <v-btn color="orange" outlined>
               <v-icon left>fa fa-upload</v-icon>upload
             </v-btn>
           </v-col>
           <v-col cols="12" sm="6">
-            <v-text-field label="Search..." filled append-icon="mdi-magnify" dense solo dark>
+            <v-text-field
+              label="Search..."
+              filled
+              append-icon="mdi-magnify"
+              dense
+              solo
+              dark
+            >
             </v-text-field>
           </v-col>
           <v-col cols="6" sm="3">
@@ -28,7 +38,8 @@
                 <v-img src="../../public/alan.jpg"></v-img>
               </v-avatar>
               <v-btn icon dark class="ml-n3 flex">
-                <v-icon x-small color="#878A94">fas fa-chevron-down</v-icon> </v-btn>
+                <v-icon x-small color="#878A94">fas fa-chevron-down</v-icon>
+              </v-btn>
             </div>
           </v-col>
         </v-row>
@@ -38,7 +49,7 @@
           <span class="ml-3 mr-3 white--text">{{ currentTrack.title }}</span>
         </v-app-bar>
       </v-div>
-      <carousel-3d :controls-visible="true" :clickable="false" :height="300">
+      <carousel-3d :controls-visible="true" :clickable="false" :height="200">
         <slide v-for="(slide, i) in tracks" :index="i" :key="i">
           <figure>
             <img :src="slide.src" />
@@ -74,16 +85,37 @@
 
       <v-div class="d-flex flex-column justify-space-between align-center">
         <v-row>
-          <v-col cols="12" sm="8" style="position: absolute; bottom: 0;
-        margin-left: auto; margin-right: auto ; left: 0;right: 0; text-align: center;">
+          <v-col
+            cols="12"
+            sm="8"
+            style="
+              position: absolute;
+              bottom: 0;
+              margin-left: auto;
+              margin-right: auto;
+              left: 0;
+              right: 0;
+              text-align: center;
+            "
+          >
             <v-card tile color="#1E2337" dark>
-              <v-progress-linear :value="50" class="my-0" height="3"></v-progress-linear>
+              <v-progress-linear
+                :value="100"
+                class="my-0"
+                height="3"
+              ></v-progress-linear>
               <v-row>
                 <v-col cols="14" sm="2">
-                  <v-img src="../../public/alan.jpg" max-height="40" max-width="40" class="mt-4 ml-2"></v-img>
+                  <v-img
+                    src="../../public/alan.jpg"
+                    max-height="90"
+                    max-width="40"
+                    class="mt-4 ml-2"
+                  ></v-img>
                 </v-col>
                 <v-col cols="12" sm="1">
-                  <h6 class="mt-5 ml-n16 grey--text text--ligten-1">{{ currentTrack.title }}<br>
+                  <h6 class="mt-5 ml-n16 grey--text text--ligten-1">
+                    {{ currentTrack.title }}<br/>
                     <span class="grey--text text--darken-2">Soolking</span>
                   </h6>
                 </v-col>
@@ -95,7 +127,7 @@
                   <v-btn icon color="orange" class="mt-4" @click="playPause">
                     <v-icon>
                       color="blue"
-                      {{ isPlaying? 'mdi-pause': 'mdi-play' }}
+                      {{ isPlaying ? "mdi-pause" : "mdi-play" }}
                     </v-icon>
                   </v-btn>
                   <v-btn icon class="mt-4" @click="nextTrack">
@@ -104,9 +136,16 @@
                 </v-col>
 
                 <v-col cols="12" sm="5">
-                  <v-app-bar flat color="#1E2337">
+                  <v-app-bar flat color="gray">
+                    <audio ref="audioPlayer" :src="currentTrack.url"></audio>
                     <span class="caption text-9xl ml-n14">01:44</span>
-                    <v-slider value="25" color="orange" class="mt-6"></v-slider>
+                    <v-slider
+                      :max="tracks.duration"
+                      color="orange"
+                      v-model="currentTime"
+                      @change="seek"
+                      class="mt-6"
+                    ></v-slider>
                     <span class="caption text-9xl">04:30</span>
                   </v-app-bar>
                 </v-col>
@@ -130,86 +169,85 @@
 </template>
 
 <script>
-
-import SideBar from "../components/SideBar.vue"
-import { Carousel3d, Slide } from "vue-carousel-3d"
+import SideBar from "../components/SideBar.vue";
+import { Carousel3d, Slide } from "vue-carousel-3d";
 
 export default {
   data: () => {
     return {
+      audio: new Audio(),
       isPlaying: false,
-
-      tracks: [
-        {
-          id: 1,
-          title: 'Track 1',
-          artist: 'Alan Walker',
-          title: "Track 1",
-          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-          src: require('../../public/01.jpg'),
-
-        },
-        {
-          id: 2,
-          title: 'Track 2',
-          artist: 'Eminem',
-          title: "Track 2",
-          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-          src: require('../../public/02.jpeg'),
-        },
-        {
-          id: 3,
-          title: 'Track 3',
-          artist: 'shakira',
-          title: "Track 3",
-          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-          src: require('../../public/03.png'),
-
-        }
-      ],
       currentTrackIndex: 0,
       audio: null,
       duration: 0,
-      currentTime: 0
-    }
+      currentTime: 0,
+      tracks: [
+        {
+          id: 1,
+          title: "Track 1",
+          artist: "Alan Walker",
+          title: "Track 1",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+          src: require("../../public/01.jpg"),
+          duration: 200,
+        },
+        {
+          id: 2,
+          title: "Track 2",
+          artist: "Eminem",
+          title: "Track 2",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+          src: require("../../public/02.jpeg"),
+          duration: 200,
+        },
+        {
+          id: 3,
+          title: "Track 3",
+          artist: "shakira",
+          title: "Track 3",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          src: require("../../public/03.png"),
+          duration: 200,
+        },
+      ],
+    };
   },
 
   components: {
     SideBar,
     Carousel3d,
-    Slide
+    Slide,
   },
 
   computed: {
     currentTrack() {
       return this.tracks[this.currentTrackIndex];
-    }
+    },
   },
-
-  mounted() {
-    this.audio = new Audio();
-    this.audio.addEventListener('loadedmetadata', () => {
-      this.duration = Math.floor(this.audio.duration);
-    });
-    this.audio.addEventListener('timeupdate', () => {
-      this.currentTime = Math.floor(this.audio.currentTime);
-    });
-    this.audio.addEventListener('ended', () => {
-      this.nextTrack();
-    });
-  },
-
 
   methods: {
     playPause() {
       const audio = this.$refs.audioPlayer;
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
+        // this.audio.src = this.tracks.url;
         audio.play();
+        // this.audio.currentTime = this.currentTime;
+        // this.audio.addEventListener("timeupdate", this.updateTime);
       } else {
         audio.pause();
       }
     },
+    // updateTime() {
+    //   this.currentTime = this.audio.currentTime;
+    //   if (this.currentTime >= this.tracks.duration) {
+    //     this.isPlaying = false;
+    //     this.audio.pause();
+    //     this.currentTime = 0;
+    //     this.audio.currentTime = 0;
+    //   }
+    // },
+
     prevTrack() {
       this.currentTrackIndex--;
       if (this.currentTrackIndex < 0) {
@@ -226,24 +264,27 @@ export default {
       this.isPlaying = false;
       this.$refs.audioPlayer.load();
     },
+    // time and progress methods
+    formatTime(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      seconds = Math.floor(seconds % 60);
+      if (seconds < 10) {
+        seconds = `0${seconds}`;
+      }
+      return `${minutes}:${seconds}`;
+    },
+    updateProgress(event) {
+      const { duration, currentTime } = event.target;
+      this.duration = Math.floor(duration);
+      this.currentTime = Math.floor(currentTime);
+    },
+    seek() {
+      if (!this.isPlaying) {
+        this.audio.currentTime = this.currentTime;
+      }
+    },
   },
-  // time and progress methods
-  formatTime(seconds) {
-    let minutes = Math.floor(seconds / 60);
-    seconds = Math.floor(seconds % 60);
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    }
-    return `${minutes}:${seconds}`;
-  },
-  updateProgress(event) {
-    const { duration, currentTime } = event.target;
-    this.duration = Math.floor(duration);
-    this.currentTime = Math.floor(currentTime);
-  }
-
-}
-
+};
 </script>
 <style>
 .carousel-3d-container figure {
