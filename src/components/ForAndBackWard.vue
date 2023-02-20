@@ -23,12 +23,14 @@
           </v-col>
         </v-row>
         <v-row align="center" class="mt-5">
+          {{ formatTime }}
           <v-col cols="12">
             <v-slider
               :max="currentTrack.duration"
               v-model="currentTime"
               @change="seek"
-            ></v-slider>
+            >
+            </v-slider>
           </v-col>
         </v-row>
       </v-container>
@@ -105,6 +107,14 @@ export default {
   computed: {
     currentTrack() {
       return this.tracks[this.currentTrackIndex];
+    },
+    formatTime() {
+      let minutes = Math.floor(this.currentTime / 60);
+      let seconds = Math.floor(this.currentTime % 60);
+      if (seconds < 10) {
+        seconds = `0${seconds}`;
+      }
+      return `${minutes}:${seconds}`;
     },
   },
 };
