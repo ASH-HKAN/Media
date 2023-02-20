@@ -27,10 +27,6 @@ const routes = [
     component: ForAndBackWard
   },
 
-
-
-
-
 ]
 
 const router = new VueRouter({
