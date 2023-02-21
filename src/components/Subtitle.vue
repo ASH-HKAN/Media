@@ -1,7 +1,14 @@
 <template>
   <div>
-    <div>
-      <div v-for="(line, index) in lyrics" :key="index">{{ line.text }}</div>
+    <div class="subtitl-nav">
+      <div
+        v-for="(line, index) in lyrics"
+        :key="index"
+        @click="$emit('clickOnLine', line.time)"
+        style="cursor: pointer"
+      >
+        {{ line.text }}
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +24,8 @@ export default {
       lyrics: [],
     };
   },
+
+  methods: {},
 
   mounted() {
     axios
@@ -36,5 +45,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.subtitl-nav {
+  height: 600px;
+  overflow: auto;
+}
 </style>
+
+
+
+

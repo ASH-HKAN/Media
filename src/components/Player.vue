@@ -35,11 +35,10 @@
         </v-row>
       </v-container>
     </v-card>
-    <subtitle />
+    <subtitle @clickOnLine="jumpToTime" />
   </div>
 </template>
-  
-  <script>
+     <script>
 import subtitle from "./Subtitle.vue";
 export default {
   components: { subtitle },
@@ -52,7 +51,6 @@ export default {
           title: "Eminem",
           duration: 365,
           audioSrc: "/E.mp3",
-          
         },
         {
           title: "Sample Track 2",
@@ -113,7 +111,13 @@ export default {
 
     seek() {
       this.audioElement.currentTime = this.currentTime;
-      debugger
+      debugger;
+    },
+
+    jumpToTime(time) {
+      this.audioElement.currentTime = time;
+      debugger;
+      console.log(time);
     },
   },
   computed: {
@@ -131,3 +135,4 @@ export default {
   },
 };
 </script>
+
