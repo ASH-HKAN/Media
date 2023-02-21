@@ -283,6 +283,7 @@ export default {
         this.audio.currentTime = this.currentTime;
       }
     },
+
   },
 };
 </script>
