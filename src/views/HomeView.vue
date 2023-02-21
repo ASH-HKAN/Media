@@ -115,12 +115,10 @@
                 </v-col>
                 <v-col cols="12" sm="1">
                   <h6 class="mt-5 ml-n16 grey--text text--ligten-1">
-                    {{ currentTrack.title }}<br/>
-                    <span class="grey--text text--darken-2">Soolking</span>
+                    <span class="grey--text text--darken-2"></span>
                   </h6>
                 </v-col>
                 <v-col cols="12" sm="2">
-                  <audio ref="audioPlayer" :src="currentTrack.url"></audio>
                   <v-btn icon class="ml-n14 mt-4" @click="prevTrack">
                     <v-icon>mdi-rewind</v-icon>
                   </v-btn>
@@ -230,23 +228,11 @@ export default {
       const audio = this.$refs.audioPlayer;
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
-        // this.audio.src = this.tracks.url;
         audio.play();
-        // this.audio.currentTime = this.currentTime;
-        // this.audio.addEventListener("timeupdate", this.updateTime);
       } else {
         audio.pause();
       }
     },
-    // updateTime() {
-    //   this.currentTime = this.audio.currentTime;
-    //   if (this.currentTime >= this.tracks.duration) {
-    //     this.isPlaying = false;
-    //     this.audio.pause();
-    //     this.currentTime = 0;
-    //     this.audio.currentTime = 0;
-    //   }
-    // },
 
     prevTrack() {
       this.currentTrackIndex--;
@@ -283,7 +269,6 @@ export default {
         this.audio.currentTime = this.currentTime;
       }
     },
-
   },
 };
 </script>
