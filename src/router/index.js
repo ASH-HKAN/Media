@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ForAndBackWard from "../components/ForAndBackWard.vue";
+import Player from "../components/Player.vue";
 
 
 Vue.use(VueRouter)
@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/demo',
     name: 'demo',
-    component: ForAndBackWard
+    component: Player
   },
 
 ]

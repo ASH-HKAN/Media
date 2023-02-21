@@ -35,11 +35,14 @@
         </v-row>
       </v-container>
     </v-card>
+    <subtitle />
   </div>
 </template>
   
   <script>
+import subtitle from "./Subtitle.vue";
 export default {
+  components: { subtitle },
   data() {
     return {
       isPlaying: false,
@@ -47,8 +50,9 @@ export default {
       tracks: [
         {
           title: "Eminem",
-          duration: 680,
+          duration: 365,
           audioSrc: "/E.mp3",
+          
         },
         {
           title: "Sample Track 2",
@@ -108,9 +112,8 @@ export default {
     },
 
     seek() {
-      if (!this.isPlaying) {
-        this.audioElement.currentTime = this.currentTime;
-      }
+      this.audioElement.currentTime = this.currentTime;
+      debugger
     },
   },
   computed: {
