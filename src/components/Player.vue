@@ -4,11 +4,11 @@
       <subtitle
         @clickOnLine="jumpToTime"
         :currentTime="currentTime"
-        :path="$route.query.subPath"
+        :path="currentTrack.subPath"
       />
     </v-app>
     <v-container>
-      <v-div>
+      <div>
         <v-row>
           <v-col
             cols="12"
@@ -77,37 +77,20 @@
             </v-card>
           </v-col>
         </v-row>
-      </v-div>
+      </div>
     </v-container>
   </div>
 </template>
      <script>
 import subtitle from "./Subtitle.vue";
-import Playlist from "./Playlist.vue";
 
 export default {
-  components: { subtitle, Playlist },
+  components: { subtitle },
   data() {
     return {
       isPlaying: false,
       currentTime: 0,
-      tracks: [
-        {
-          title: "Eminem",
-          duration: 365,
-          audioSrc: "file/E.mp3",
-        },
-        {
-          title: "Dua Lipa",
-          duration: 365,
-          audioSrc: "file/B.mp3",
-        },
-        {
-          title: "Anchor",
-          duration: 365,
-          audioSrc: "file/A.mp3",
-        },
-      ],
+
       audioElement: new Audio(),
       currentTrackIndex: 0,
     };
@@ -116,7 +99,7 @@ export default {
     playPause() {
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
-        this.audioElement.src = this.currentTrack.audioSrc;
+        this.audioElement.src = this.currentTrack.audioPath;
         this.audioElement.play();
         this.audioElement.currentTime = this.currentTime;
         this.audioElement.addEventListener("timeupdate", this.updateTime);
@@ -163,11 +146,12 @@ export default {
   },
   computed: {
     currentTrack() {
-      return this.tracks[this.currentTrackIndex];
-    },
-    aaa() {
-      debugger;
-      return this.$route;
+      return {
+        title: this.$route.query.title,
+        duration: this.$route.query.duration,
+        audioPath: this.$route.query.audioPath,
+        subPath: this.$route.query.subPath,
+      };
     },
 
     formatTime() {

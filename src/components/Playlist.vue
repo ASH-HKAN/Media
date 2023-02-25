@@ -53,13 +53,13 @@ export default {
   props: {},
   methods: {
     playTrack(track) {
-      debugger
       this.$router.push({
         path: "/demo",
         query: {
           title: track.title,
           audioPath: `file/${track.fileName}.mp3`,
           subPath: `file/${track.fileName}.lrc`,
+          duration: track.duration,
         },
         params: {},
       });
