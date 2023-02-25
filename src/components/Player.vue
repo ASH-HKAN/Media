@@ -1,7 +1,11 @@
 <template>
   <div>
     <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
-      <subtitle @clickOnLine="jumpToTime" :currentTime="currentTime" />
+      <subtitle
+        @clickOnLine="jumpToTime"
+        :currentTime="currentTime"
+        :path="$route.query.subPath"
+      />
     </v-app>
     <v-container>
       <v-div>
@@ -94,14 +98,14 @@ export default {
           audioSrc: "file/E.mp3",
         },
         {
-          title: "Eminem",
+          title: "Dua Lipa",
           duration: 365,
-          audioSrc: "file/E.mp3",
+          audioSrc: "file/B.mp3",
         },
         {
-          title: "Eminem",
+          title: "Anchor",
           duration: 365,
-          audioSrc: "file/E.mp3",
+          audioSrc: "file/A.mp3",
         },
       ],
       audioElement: new Audio(),
@@ -161,6 +165,11 @@ export default {
     currentTrack() {
       return this.tracks[this.currentTrackIndex];
     },
+    aaa() {
+      debugger;
+      return this.$route;
+    },
+
     formatTime() {
       let minutes = Math.floor(this.currentTime / 60);
       let seconds = Math.floor(this.currentTime % 60);

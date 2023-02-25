@@ -5,7 +5,7 @@
       <v-list-item
         v-for="(track, index) in tracks"
         :key="index"
-        @click="playTrack(index)"
+        @click="playTrack(track)"
       >
         <v-list-item-content>
           <v-list-item-title>{{ track.title }}</v-list-item-title>
@@ -34,17 +34,15 @@ export default {
         },
         {
           Lesson: "2",
-          title: "Sample Track 2",
+          title: "Dua Lipa",
           duration: 160,
-          fileName:
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          fileName: "B",
         },
         {
           Lesson: "3",
-          title: "Sample Track 3",
+          title: "Anchor",
           duration: 300,
-          fileName:
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          fileName: "A",
         },
       ],
       audioElement: new Audio(),
@@ -55,16 +53,15 @@ export default {
   props: {},
   methods: {
     playTrack(track) {
+      debugger
       this.$router.push({
         path: "/demo",
         query: {
           title: track.title,
+          audioPath: `file/${track.fileName}.mp3`,
+          subPath: `file/${track.fileName}.lrc`,
         },
-        params: {
-          audioPath:`file/${track.fileName}.mp3`,
-          subPath:`file/${track.fileName}.lrc`,
-          title: track.title,
-        },
+        params: {},
       });
     },
 

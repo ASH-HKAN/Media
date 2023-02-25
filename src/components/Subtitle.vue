@@ -5,7 +5,11 @@
         v-for="(line, index) in lyrics"
         :key="index"
         @click="$emit('clickOnLine', line.time)"
-        :class="{ 'is-played': line.time < currentTime,'current-line': line.time < currentTime && lyrics[index+1].time > currentTime }"
+        :class="{
+          'is-played': line.time < currentTime,
+          'current-line':
+            line.time < currentTime && lyrics[index + 1].time > currentTime,
+        }"
       >
         {{ line.text }}
       </div>
@@ -21,7 +25,9 @@ export default {
   name: "subtitle",
   props: {
     currentTime: 0,
+    path: "",
   },
+
   data() {
     return {
       lyrics: [],
@@ -32,7 +38,7 @@ export default {
 
   mounted() {
     axios
-      .get("file/E.lrc")
+      .get(this.path)
       .then((response) => {
         // this.fileContents = response.data;
         this.lyrics = lrc2Json(response.data);
