@@ -79,8 +79,10 @@
 </template>
      <script>
 import subtitle from "./Subtitle.vue";
+import Playlist from "./Playlist.vue";
+
 export default {
-  components: { subtitle },
+  components: { subtitle, Playlist },
   data() {
     return {
       isPlaying: false,
@@ -92,16 +94,14 @@ export default {
           audioSrc: "file/E.mp3",
         },
         {
-          title: "Sample Track 2",
-          duration: 160,
-          audioSrc:
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+          title: "Eminem",
+          duration: 365,
+          audioSrc: "file/E.mp3",
         },
         {
-          title: "Sample Track 3",
-          duration: 300,
-          audioSrc:
-            "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+          title: "Eminem",
+          duration: 365,
+          audioSrc: "file/E.mp3",
         },
       ],
       audioElement: new Audio(),
@@ -153,8 +153,8 @@ export default {
     },
 
     jumpToTime(time) {
-      this.audioElement.currentTime = time-0.5;
-      this.currentTime=time-0.5;
+      this.audioElement.currentTime = time - 0.5;
+      this.currentTime = time - 0.5;
     },
   },
   computed: {
@@ -177,9 +177,6 @@ export default {
   margin-top: -20px;
   margin-left: 700px;
   color: orange;
-}
-
-.player {
 }
 </style>
 
