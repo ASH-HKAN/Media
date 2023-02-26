@@ -35,13 +35,13 @@ export default {
         {
           Lesson: "2",
           title: "Dua Lipa",
-          duration: 160,
+          duration: 137,
           fileName: "B",
         },
         {
           Lesson: "3",
           title: "Anchor",
-          duration: 300,
+          duration: 257,
           fileName: "A",
         },
       ],
