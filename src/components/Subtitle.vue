@@ -1,18 +1,20 @@
 <template>
   <div>
-    <div class="subtitl-nav">
-      <div
-        v-for="(line, index) in lyrics"
-        :key="index"
-        :id="'lineNum' + index"
-        @click="$emit('clickOnLine', line.time)"
-        :class="{
-          'is-played': line.time < currentTime,
-          'current-line':
-            line.time < currentTime && lyrics[index + 1].time > currentTime,
-        }"
-      >
-        {{ line.text }}
+    <div id="subtitleNav" class="subtitl-nav">
+      <div>
+        <div
+          v-for="(line, index) in lyrics"
+          :key="index"
+          :id="'lineNum' + index"
+          @click="$emit('clickOnLine', line.time)"
+          :class="{
+            'is-played': line.time < currentTime,
+            'current-line':
+              line.time < currentTime && lyrics[index + 1].time > currentTime,
+          }"
+        >
+          {{ line.text }}
+        </div>
       </div>
     </div>
     <p>Current line index: {{ currentIndex }}</p>
@@ -52,7 +54,15 @@ export default {
   },
   watch: {
     currentIndex(newVal) {
-      document.getElementById("lineNum" + newVal).scrollIntoView();
+      // Scroll to the element with the matching index
+      const element = document.getElementById(`lineNum${newVal}`);
+      const subtitleNav = document.getElementById("subtitleNav");
+
+      if (element && subtitleNav) {
+        // element.scrollIntoView();
+        subtitleNav.scrollTo(0, element.offsetTop - 20);
+        debugger;
+      }
     },
   },
 
@@ -86,6 +96,14 @@ export default {
 }
 .current-line {
   color: red;
+}
+
+body {
+  width: 5000px;
+}
+
+button {
+  position: fixed;
 }
 </style>
 
