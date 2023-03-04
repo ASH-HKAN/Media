@@ -4,6 +4,7 @@
       <div
         v-for="(line, index) in lyrics"
         :key="index"
+        :id="'lineNum' + index"
         @click="$emit('clickOnLine', line.time)"
         :class="{
           'is-played': line.time < currentTime,
@@ -14,6 +15,7 @@
         {{ line.text }}
       </div>
     </div>
+    <p>Current line index: {{ currentIndex }}</p>
   </div>
 </template>
 
@@ -34,7 +36,25 @@ export default {
     };
   },
 
-  methods: {},
+  computed: {
+    currentIndex() {
+      // Find the index of the line with the closest time value to the current time
+      const index = this.lyrics.findIndex((line, i, arr) => {
+        const nextLine = arr[i + 1];
+        return (
+          line.time <= this.currentTime &&
+          (!nextLine || nextLine.time > this.currentTime)
+        );
+      });
+      // Return the index if found, otherwise -1
+      return index !== -1 ? index : -1;
+    },
+  },
+  watch: {
+    currentIndex(newVal) {
+      document.getElementById("lineNum" + newVal).scrollIntoView();
+    },
+  },
 
   mounted() {
     axios
