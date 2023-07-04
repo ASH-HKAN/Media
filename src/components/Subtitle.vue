@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div id="subtitleNav" class="subtitl-nav">
+  <div id="subtitleNav" class="subtitl-nav">
+    <div>
       <div>
         <div
           v-for="(line, index) in lyrics"

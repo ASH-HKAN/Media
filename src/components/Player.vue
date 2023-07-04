@@ -1,28 +1,15 @@
 <template>
-  <div>
-    <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
+  <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
+    <div>
       <subtitle
         @clickOnLine="jumpToTime"
         :currentTime="currentTime"
         :path="currentTrack.subPath"
       />
-    </v-app>
-    <v-container>
-      <div>
+
+      <v-container>
         <v-row>
-          <v-col
-            cols="12"
-            sm="8"
-            style="
-              position: absolute;
-              bottom: 0;
-              margin-left: -30px;
-              margin-right: -20px;
-              left: 0;
-              right: 0;
-              text-align: center;
-            "
-          >
+          <v-col class="playerStyle">
             <v-card tile color="#1E2337" dark class="player">
               <v-progress-linear
                 :value="100"
@@ -80,6 +67,19 @@
                           {{ currentTrack.title }}
                         </v-card-title>
                       </v-col>
+                      <v-col style="position: absolute">
+                        <v-icon @click="toggleVolumeSlider">
+                          mdi-volume-high
+                        </v-icon>
+                        <v-slider
+                          v-if="showVolumeSlider"
+                          v-model="currentVolume"
+                          max="100"
+                          thumb-label
+                          @change="setVolume"
+                          color="orange"
+                        ></v-slider>
+                      </v-col>
                     </v-container>
                   </v-app-bar>
                 </v-col>
@@ -87,9 +87,9 @@
             </v-card>
           </v-col>
         </v-row>
-      </div>
-    </v-container>
-  </div>
+      </v-container>
+    </div>
+  </v-app>
 </template>
      <script>
 import subtitle from "./Subtitle.vue";
@@ -102,6 +102,9 @@ export default {
       isRestarting: false,
       currentTime: 0,
 
+      showVolumeSlider: false,
+
+      currentVolume: 100,
       audioElement: new Audio(),
       currentTrackIndex: 0,
 
@@ -168,17 +171,6 @@ export default {
       }
     },
 
-    restart() {
-      this.isRestarting = !this.isRestarting;
-      if (this.isRestarting) {
-        this.audioElement.src = this.currentTrack.audioPath;
-        this.audioElement.currentTrack = this.currentTime;
-        this.audioElement.addEventListener("timeupdate", this.updateTime);
-      } else {
-        this.audioElement.isNotRestarting();
-      }
-    },
-
     seek() {
       this.audioElement.currentTime = this.currentTime;
     },
@@ -195,6 +187,25 @@ export default {
         this.currentColorIndex =
           (this.currentColorIndex + 1) % this.colors.length;
       }, duration);
+    },
+
+    restart() {
+      this.isRestarting = !this.isRestarting;
+      if (this.isRestarting) {
+        this.audioElement.src = this.currentTrack.audioPath;
+        this.audioElement.currentTrack = this.currentTime;
+        this.audioElement.addEventListener("timeupdate", this.updateTime);
+      } else {
+        this.audioElement.isNotRestarting();
+      }
+    },
+
+    setVolume() {
+      this.audioElement.volume = this.currentVolume / 100;
+    },
+
+    toggleVolumeSlider() {
+      this.showVolumeSlider = !this.showVolumeSlider;
     },
   },
   computed: {
@@ -229,6 +240,8 @@ export default {
         this.animateTitleColor = false;
       }, 200000);
     });
+
+    this.setVolume();
   },
 };
 </script>
@@ -318,6 +331,12 @@ export default {
   100% {
     color: #fffeff;
   }
+}
+
+.playerStyle {
+  align-items: center;
+  display: left;
+  margin-left: -40cm;
 }
 </style>
 

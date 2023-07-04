@@ -85,14 +85,14 @@
 
       <v-div class="d-flex flex-column justify-space-between align-center">
         <v-row>
-          <v-col
+          <!-- <v-col
             cols="12"
             sm="8"
             style="
               position: absolute;
               bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
+              margin-left: -30px;
+              margin-right: -20px;
               left: 0;
               right: 0;
               text-align: center;
@@ -159,7 +159,7 @@
                 </v-col>
               </v-row>
             </v-card>
-          </v-col>
+          </v-col> -->
         </v-row>
       </v-div>
     </v-container>
