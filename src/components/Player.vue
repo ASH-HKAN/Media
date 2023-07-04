@@ -48,6 +48,11 @@
                   <v-btn color="orange" icon class="mx-5" @click="forward">
                     <v-icon>mdi-fast-forward</v-icon>
                   </v-btn>
+                  <v-btn color="blue" icon @click="restart">
+                    <v-icon>
+                      {{ isRestarting ? "mdi-restart" : "mdi-restart" }}
+                    </v-icon>
+                  </v-btn>
                 </v-col>
 
                 <v-col cols="12" sm="5">
@@ -94,6 +99,7 @@ export default {
   data() {
     return {
       isPlaying: false,
+      isRestarting: false,
       currentTime: 0,
 
       audioElement: new Audio(),
@@ -159,6 +165,17 @@ export default {
         this.audioElement.currentTime = this.currentTime;
       } else {
         this.currentTime += 5;
+      }
+    },
+
+    restart() {
+      this.isRestarting = !this.isRestarting;
+      if (this.isRestarting) {
+        this.audioElement.src = this.currentTrack.audioPath;
+        this.audioElement.currentTrack = this.currentTime;
+        this.audioElement.addEventListener("timeupdate", this.updateTime);
+      } else {
+        this.audioElement.isNotRestarting();
       }
     },
 
