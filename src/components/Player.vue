@@ -16,8 +16,8 @@
             style="
               position: absolute;
               bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
+              margin-left: -30px;
+              margin-right: -20px;
               left: 0;
               right: 0;
               text-align: center;
@@ -66,11 +66,16 @@
                         </div>
                       </v-col>
                     </v-row>
-                    <v-col cols="8">
-                      <v-card-title>
-                        {{ currentTrack.title }}
-                      </v-card-title>
-                    </v-col>
+                    <v-container fluid>
+                      <v-col cols="8">
+                        <v-card-title
+                          :class="{ 'color-animation': animateTitleColor }"
+                          class="track-title"
+                        >
+                          {{ currentTrack.title }}
+                        </v-card-title>
+                      </v-col>
+                    </v-container>
                   </v-app-bar>
                 </v-col>
               </v-row>
@@ -93,6 +98,28 @@ export default {
 
       audioElement: new Audio(),
       currentTrackIndex: 0,
+
+      animateTitleColor: false,
+      colorIndex: 0,
+      colors: [
+        "#fffeff",
+        "#ece6e8",
+        "#c8aab6",
+        "#890f9c",
+        "#b40926",
+        "#9c0f47",
+        "#e3135f",
+        "#df1278",
+        "#d310dd",
+        "#1d22ba",
+        "#0d4c87",
+        "#12916b",
+        "#0da75a",
+        "#37ba07",
+        "#a1c610",
+        "#d7c713",
+        "#ff0000",
+      ],
     };
   },
   methods: {
@@ -143,6 +170,15 @@ export default {
       this.audioElement.currentTime = time - 0.5;
       this.currentTime = time - 0.5;
     },
+
+    changeTitleColor() {
+      const duration = 21000;
+
+      setTimeout(() => {
+        this.currentColorIndex =
+          (this.currentColorIndex + 1) % this.colors.length;
+      }, duration);
+    },
   },
   computed: {
     currentTrack() {
@@ -162,6 +198,20 @@ export default {
       }
       return `${minutes}:${seconds}`;
     },
+
+    titleColor() {
+      return this.colors[this.currentColorIndex];
+    },
+  },
+
+  mounted() {
+    setInterval(() => {
+      this.animateTitleColor = true;
+      setTimeout(() => {
+        this.colorIndex = (this.colorIndex + 1) % this.colors.length;
+        this.animateTitleColor = false;
+      }, 200000);
+    });
   },
 };
 </script>
@@ -170,6 +220,87 @@ export default {
   margin-top: -20px;
   margin-left: 700px;
   color: orange;
+}
+.track-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.color-animation {
+  animation: changeColor 200s linear;
+}
+
+@keyframes changeColor {
+  100% {
+    color: #ffffff;
+  }
+
+  100% {
+    color: #e65507;
+  }
+
+  100% {
+    color: #ff0000;
+  }
+  100% {
+    color: #d7c713;
+  }
+  100% {
+    color: #a1c610;
+  }
+  100% {
+    color: #37ba07;
+  }
+  100% {
+    color: #0da75a;
+  }
+  100% {
+    color: #12916b;
+  }
+  100% {
+    color: #0d4c87;
+  }
+  95% {
+    color: #1d22ba;
+  }
+  95% {
+    color: #d310dd;
+  }
+
+  75% {
+    color: #df1278;
+  }
+
+  100% {
+    color: #e3135f;
+  }
+
+  100% {
+    color: #9c0f47;
+  }
+
+  100% {
+    color: #b40926;
+  }
+
+  100% {
+    color: #890f9c;
+  }
+
+  100% {
+    color: #c8aab6;
+  }
+  100% {
+    color: #ece6e8;
+  }
+
+  100% {
+    color: #fffeff;
+  }
 }
 </style>
 

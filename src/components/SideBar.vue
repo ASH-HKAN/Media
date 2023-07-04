@@ -28,6 +28,7 @@
         v-for="(item, i) in collections"
         :key="i"
         active-class="border"
+        @click="redirectTo(item.route)"
       >
         <v-list-item-icon>
           <v-icon v-text="item.icon"></v-icon>
@@ -53,12 +54,19 @@ export default {
     ],
     collections: [
       { icon: "fas fa-heart", text: "Likes", route: "/likes" },
-      { icon: "fas fa-music", text: "Playlist", route: "/playlist" },
+      { icon: "fas fa-music", text: "Playlist", route: "/Playlist" },
       { icon: "fas fa-compact-disc", text: "Albums", route: "/albums" },
       { icon: "fas fa-podcast", text: "Podcasts", route: "/podcasts" },
       { icon: "fas fa-users", text: "Following", route: "/following" },
     ],
   }),
+
+  methods: {
+    redirectTo(route) {
+      // Use your preferred method for redirection
+      this.$router.push(route);
+    },
+  },
 };
 </script>
 
