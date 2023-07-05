@@ -228,15 +228,15 @@ export default {
       this.showVolumeSlider = !this.showVolumeSlider;
     },
 
-    handelKeyPress(event) {
+    handelKeyPressSpace(event) {
       if (event.keyCode === 32) {
         event.preventDefault();
         this.playPause();
+      } else if (event.keyCode === 65) {
+        this.forward();
+      } else if (event.keyCode === 68) {
+        this.forward();
       }
-    },
-
-    beforDestroy() {
-      window.removeEventListener("keypress", this.handelKeyPress);
     },
   },
   mounted() {
@@ -250,7 +250,7 @@ export default {
 
     this.setVolume();
 
-    window.addEventListener("keypress", this.handelKeyPress);
+    window.addEventListener("keypress", this.handelKeyPressSpace);
   },
 
   computed: {
