@@ -1,6 +1,6 @@
 <template>
-  <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
-    <div>
+  <div id="playerPage">
+    <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
       <subtitle
         @clickOnLine="jumpToTime"
         :currentTime="currentTime"
@@ -8,88 +8,107 @@
       />
 
       <v-container>
-        <v-row>
-          <v-col class="playerStyle">
-            <v-card tile color="#1E2337" dark class="player">
-              <v-progress-linear
-                :value="100"
-                class="my-0"
-                height="3"
-              ></v-progress-linear>
-              <v-row>
-                <v-col cols="2" class="mt-2">
-                  <v-btn color="orange" icon class="mx-5" @click="backward">
-                    <v-icon>mdi-rewind</v-icon>
-                  </v-btn>
-                  <v-btn
-                    color="blue"
-                    icon
-                    large
-                    class="mx-2"
-                    @click="playPause"
-                  >
-                    <v-icon>
-                      {{ isPlaying ? "mdi-pause" : "mdi-play" }}
-                    </v-icon>
-                  </v-btn>
-                  <v-btn color="orange" icon class="mx-5" @click="forward">
-                    <v-icon>mdi-fast-forward</v-icon>
-                  </v-btn>
-                  <v-btn color="blue" icon @click="restart">
-                    <v-icon>
-                      {{ isRestarting ? "mdi-restart" : "mdi-restart" }}
-                    </v-icon>
-                  </v-btn>
-                </v-col>
+        <v-div class="d-flex flex-column justify-space-between align-center">
+          <v-row>
+            <v-col
+              cols="12"
+              sm="8"
+              style="
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+              "
+            >
+              <v-card tile color="green" dark>
+                <v-progress-linear
+                  :value="100"
+                  class="my-0"
+                  height="3"
+                ></v-progress-linear>
 
-                <v-col cols="12" sm="5">
-                  <v-app-bar flat color="#1E2337">
-                    <v-row align="center" class="mt-4">
-                      <v-col cols="12">
-                        <v-slider
-                          color="blue"
-                          :max="currentTrack.duration"
-                          v-model="currentTime"
-                          @change="seek"
-                        >
-                        </v-slider>
-                        <div class="timer">
-                          {{ formatTime }}
-                        </div>
-                      </v-col>
-                    </v-row>
-                    <v-container fluid>
-                      <v-col cols="8">
-                        <v-card-title
-                          :class="{ 'color-animation': animateTitleColor }"
-                          class="track-title"
-                        >
-                          {{ currentTrack.title }}
-                        </v-card-title>
-                      </v-col>
-                      <v-col style="position: absolute">
-                        <v-icon @click="toggleVolumeSlider">
-                          mdi-volume-high
-                        </v-icon>
-                        <v-slider
+                <v-row>
+                  <v-col cols="2" class="mt-2">
+                    <v-btn color="orange" icon class="mx-5" @click="backward">
+                      <v-icon>mdi-rewind</v-icon>
+                    </v-btn>
+                    <v-btn
+                      color="blue"
+                      icon
+                      large
+                      class="mx-2"
+                      @click="playPause"
+                    >
+                      <v-icon>
+                        {{ isPlaying ? "mdi-pause" : "mdi-play" }}
+                      </v-icon>
+                    </v-btn>
+                    <v-btn color="orange" icon class="mx-5" @click="forward">
+                      <v-icon>mdi-fast-forward</v-icon>
+                    </v-btn>
+
+                    <v-btn color="blue" icon @click="restart">
+                      <v-icon>
+                        {{ isRestarting ? "mdi-restart" : "mdi-restart" }}
+                      </v-icon>
+                    </v-btn>
+                  </v-col>
+
+                  <v-col cols="12" sm="5">
+                    <v-app-bar color="red">
+                      <v-row align="center" class="mt-4">
+                        <v-col cols="12">
+                          <v-slider
+                            color="blue"
+                            :max="currentTrack.duration"
+                            v-model="currentTime"
+                            @change="seek"
+                          >
+                          </v-slider>
+                          <div class="timer">
+                            {{ formatTime }}
+                          </div>
+                        </v-col>
+                      </v-row>
+                      <v-container fluid>
+                        <v-col cols="8">
+                          <v-card-title
+                            :class="{ 'color-animation': animateTitleColor }"
+                            class="track-title"
+                          >
+                            {{ currentTrack.title }}
+                          </v-card-title>
+                        </v-col>
+                      </v-container>
+                      <!-- VOL -->
+                      <div class="vol">
+                        <span @click="toggleVolumeSlider">
+                          <i v-if="volumeIcon" class="mdi mdi-volume-up"></i>
+                          <i v-else class="mdi mdi-volume-off"></i>
+                        </span>
+
+                        <input
                           v-if="showVolumeSlider"
+                          type="range"
                           v-model="currentVolume"
-                          max="100"
                           thumb-label
-                          @change="setVolume"
-                          color="orange"
-                        ></v-slider>
-                      </v-col>
-                    </v-container>
-                  </v-app-bar>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-        </v-row>
+                          min="0"
+                          max="100"
+                          @input="setVolume"
+                        />
+                      </div>
+                      <!-- VOL -->
+                    </v-app-bar>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-div>
       </v-container>
-    </div>
-  </v-app>
+    </v-app>
+  </div>
 </template>
      <script>
 import subtitle from "./Subtitle.vue";
@@ -103,8 +122,9 @@ export default {
       currentTime: 0,
 
       showVolumeSlider: false,
+      currentVolume: 50,
+      volumeIcon: false,
 
-      currentVolume: 100,
       audioElement: new Audio(),
       currentTrackIndex: 0,
 
@@ -331,12 +351,6 @@ export default {
   100% {
     color: #fffeff;
   }
-}
-
-.playerStyle {
-  align-items: center;
-  display: left;
-  margin-left: -40cm;
 }
 </style>
 
