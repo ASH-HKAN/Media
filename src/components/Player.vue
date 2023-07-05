@@ -227,7 +227,32 @@ export default {
     toggleVolumeSlider() {
       this.showVolumeSlider = !this.showVolumeSlider;
     },
+
+    handelKeyPress(event) {
+      if (event.keyCode === 32) {
+        event.preventDefault();
+        this.playPause();
+      }
+    },
+
+    beforDestroy() {
+      window.removeEventListener("keypress", this.handelKeyPress);
+    },
   },
+  mounted() {
+    setInterval(() => {
+      this.animateTitleColor = true;
+      setTimeout(() => {
+        this.colorIndex = (this.colorIndex + 1) % this.colors.length;
+        this.animateTitleColor = false;
+      }, 200000);
+    });
+
+    this.setVolume();
+
+    window.addEventListener("keypress", this.handelKeyPress);
+  },
+
   computed: {
     currentTrack() {
       return {
@@ -250,18 +275,6 @@ export default {
     titleColor() {
       return this.colors[this.currentColorIndex];
     },
-  },
-
-  mounted() {
-    setInterval(() => {
-      this.animateTitleColor = true;
-      setTimeout(() => {
-        this.colorIndex = (this.colorIndex + 1) % this.colors.length;
-        this.animateTitleColor = false;
-      }, 200000);
-    });
-
-    this.setVolume();
   },
 };
 </script>
