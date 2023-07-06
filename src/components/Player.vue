@@ -21,7 +21,7 @@
                 text-align: center;
               "
             >
-              <v-card tile color="green" dark>
+              <v-card tile color="#ff33f" dark>
                 <v-progress-linear
                   :value="100"
                   class="my-0"
@@ -33,6 +33,7 @@
                     <v-btn color="orange" icon class="mx-5" @click="backward">
                       <v-icon>mdi-rewind</v-icon>
                     </v-btn>
+                    <!-- p/P -->
                     <v-btn
                       color="blue"
                       icon
@@ -44,6 +45,7 @@
                         {{ isPlaying ? "mdi-pause" : "mdi-play" }}
                       </v-icon>
                     </v-btn>
+                    <!-- p/P -->
                     <v-btn color="orange" icon class="mx-5" @click="forward">
                       <v-icon>mdi-fast-forward</v-icon>
                     </v-btn>
@@ -53,6 +55,17 @@
                         {{ isRestarting ? "mdi-restart" : "mdi-restart" }}
                       </v-icon>
                     </v-btn>
+
+                    <!-- repeat -->
+                    <v-btn icon @click="enableLoop" type="button">
+                      <v-icon color="red">
+                        {{ isRepeating ? "mdi-repeat-once" : "mdi-repeat-off" }}
+                      </v-icon>
+                    </v-btn>
+                    <v-btn @click="checkLoop" type="button">
+                      Check loop status
+                    </v-btn>
+                    <!-- repeat -->
                   </v-col>
 
                   <v-col cols="12" sm="5">
@@ -118,6 +131,7 @@ export default {
   data() {
     return {
       isPlaying: false,
+      isRepeating: false,
       isRestarting: false,
       currentTime: 0,
 
@@ -152,17 +166,6 @@ export default {
     };
   },
   methods: {
-    playPause() {
-      this.isPlaying = !this.isPlaying;
-      if (this.isPlaying) {
-        this.audioElement.src = this.currentTrack.audioPath;
-        this.audioElement.play();
-        this.audioElement.currentTime = this.currentTime;
-        this.audioElement.addEventListener("timeupdate", this.updateTime);
-      } else {
-        this.audioElement.pause();
-      }
-    },
     updateTime() {
       this.currentTime = this.audioElement.currentTime;
       if (this.currentTime >= this.currentTrack.duration) {
@@ -233,10 +236,40 @@ export default {
         event.preventDefault();
         this.playPause();
       } else if (event.keyCode === 65) {
-        this.forward();
+        this.backward();
       } else if (event.keyCode === 68) {
         this.forward();
       }
+    },
+    playPause() {
+      this.isPlaying = !this.isPlaying;
+      if (this.isPlaying) {
+        this.audioElement.src = this.currentTrack.audioPath;
+        this.audioElement.play();
+        this.audioElement.currentTime = this.currentTime;
+        this.audioElement.addEventListener("timeupdate", this.updateTime);
+      } else {
+        this.audioElement.pause();
+      }
+    },
+
+    enableLoop() {
+      this.isRepeating = !this.isRepeating;
+      if (this.isRepeating) {
+        this.audioElement.loop = true;
+        this.audioElement.onload();
+      } else {
+        this.audioElement.onload;
+      }
+    },
+
+    // desableLoop() {
+    //   this.audioElement.loop = false;
+    //   this.audioElement.onload();
+    // },
+
+    checkLoop() {
+      alert(this.audioElement.loop);
     },
   },
   mounted() {
