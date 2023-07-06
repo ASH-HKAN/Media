@@ -23,10 +23,12 @@
             >
               <v-card tile color="#ff33f" dark>
                 <v-progress-linear
-                  :value="100"
-                  class="my-0"
-                  height="3"
+                  indeterminate
+                  color="lime"
+                  reverse
                 ></v-progress-linear>
+
+                <br />
 
                 <v-row>
                   <v-col cols="2" class="mt-2">
@@ -94,24 +96,29 @@
                           </v-card-title>
                         </v-col>
                       </v-container>
-                      <!-- VOL -->
+                      <!-- VOL-->
                       <div class="vol">
-                        <span @click="toggleVolumeSlider">
-                          <i v-if="volumeIcon" class="mdi mdi-volume-up"></i>
-                          <i v-else class="mdi mdi-volume-off"></i>
-                        </span>
+                        <v-btn icon @click="toggleVolumeSlider">
+                          <v-icon color="orange">
+                            {{
+                              showVolumeSlider
+                                ? "mdi-volume-high"
+                                : "mdi-volume-off"
+                            }}
+                          </v-icon>
+                          {{ this.currentVolume }}
+                        </v-btn>
 
                         <input
                           v-if="showVolumeSlider"
                           type="range"
                           v-model="currentVolume"
-                          thumb-label
                           min="0"
                           max="100"
                           @input="setVolume"
                         />
                       </div>
-                      <!-- VOL -->
+                      <!-- VOL-->
                     </v-app-bar>
                   </v-col>
                 </v-row>
@@ -166,6 +173,17 @@ export default {
     };
   },
   methods: {
+    playPause() {
+      this.isPlaying = !this.isPlaying;
+      if (this.isPlaying) {
+        this.audioElement.src = this.currentTrack.audioPath;
+        this.audioElement.play();
+        this.audioElement.currentTime = this.currentTime;
+        this.audioElement.addEventListener("timeupdate", this.updateTime);
+      } else {
+        this.audioElement.pause();
+      }
+    },
     updateTime() {
       this.currentTime = this.audioElement.currentTime;
       if (this.currentTime >= this.currentTrack.duration) {
@@ -228,7 +246,18 @@ export default {
     },
 
     toggleVolumeSlider() {
+      console.log(
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        this.currentVolume,
+        this.showVolumeSlider
+      );
       this.showVolumeSlider = !this.showVolumeSlider;
+      if (this.currentVolume > 0) {
+        this.showVolumeSlider = true;
+      }
+      if (this.currentVolume === 0) {
+        this.showVolumeSlider = false;
+      }
     },
 
     handelKeyPressSpace(event) {
@@ -241,15 +270,11 @@ export default {
         this.forward();
       }
     },
-    playPause() {
-      this.isPlaying = !this.isPlaying;
-      if (this.isPlaying) {
-        this.audioElement.src = this.currentTrack.audioPath;
-        this.audioElement.play();
-        this.audioElement.currentTime = this.currentTime;
-        this.audioElement.addEventListener("timeupdate", this.updateTime);
-      } else {
-        this.audioElement.pause();
+
+    handelKeyPressVolume(event) {
+      if (event.keyCode == 87) 
+      event.preventDefault();
+
       }
     },
 
@@ -261,15 +286,6 @@ export default {
       } else {
         this.audioElement.onload;
       }
-    },
-
-    // desableLoop() {
-    //   this.audioElement.loop = false;
-    //   this.audioElement.onload();
-    // },
-
-    checkLoop() {
-      alert(this.audioElement.loop);
     },
   },
   mounted() {
