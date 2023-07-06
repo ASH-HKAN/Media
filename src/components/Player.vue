@@ -21,7 +21,7 @@
                 text-align: center;
               "
             >
-              <v-card tile color="#ff33f" dark>
+              <v-card tile color="#010322" dark>
                 <v-progress-linear
                   indeterminate
                   color="lime"
@@ -64,14 +64,12 @@
                         {{ isRepeating ? "mdi-repeat-once" : "mdi-repeat-off" }}
                       </v-icon>
                     </v-btn>
-                    <v-btn @click="checkLoop" type="button">
-                      Check loop status
-                    </v-btn>
+
                     <!-- repeat -->
                   </v-col>
 
                   <v-col cols="12" sm="5">
-                    <v-app-bar color="red">
+                    <v-app-bar icon color="#010322">
                       <v-row align="center" class="mt-4">
                         <v-col cols="12">
                           <v-slider
@@ -96,7 +94,7 @@
                           </v-card-title>
                         </v-col>
                       </v-container>
-                      <!-- VOL-->
+                      <!-- VOL\-->
                       <div class="vol">
                         <v-btn icon @click="toggleVolumeSlider">
                           <v-icon color="orange">
@@ -118,7 +116,7 @@
                           @input="setVolume"
                         />
                       </div>
-                      <!-- VOL-->
+                      <!-- VOL -->
                     </v-app-bar>
                   </v-col>
                 </v-row>
@@ -142,7 +140,7 @@ export default {
       isRestarting: false,
       currentTime: 0,
 
-      showVolumeSlider: false,
+      showVolumeSlider: true,
       currentVolume: 50,
       volumeIcon: false,
 
@@ -244,7 +242,6 @@ export default {
     setVolume() {
       this.audioElement.volume = this.currentVolume / 100;
     },
-
     toggleVolumeSlider() {
       console.log(
         "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -268,13 +265,6 @@ export default {
         this.backward();
       } else if (event.keyCode === 68) {
         this.forward();
-      }
-    },
-
-    handelKeyPressVolume(event) {
-      if (event.keyCode == 87) 
-      event.preventDefault();
-
       }
     },
 
@@ -377,7 +367,7 @@ export default {
     color: #0d4c87;
   }
   95% {
-    color: #1d22ba;
+    color: #010322;
   }
   95% {
     color: #d310dd;
