@@ -44,6 +44,13 @@ export default {
           duration: 257,
           fileName: "A",
         },
+
+        {
+          Lesson: "3",
+          title: "English",
+          duration: 393,
+          fileName: "T",
+        },
       ],
       audioElement: new Audio(),
       currentTrackIndex: 0,

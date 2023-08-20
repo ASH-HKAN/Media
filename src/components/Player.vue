@@ -24,8 +24,9 @@
               <v-card tile color="#010322" dark>
                 <v-progress-linear
                   indeterminate
-                  color="lime"
+                  color="red"
                   reverse
+                  height="0.1px"
                 ></v-progress-linear>
 
                 <br />
@@ -50,12 +51,6 @@
                     <!-- p/P -->
                     <v-btn color="orange" icon class="mx-5" @click="forward">
                       <v-icon>mdi-fast-forward</v-icon>
-                    </v-btn>
-
-                    <v-btn color="blue" icon @click="restart">
-                      <v-icon>
-                        {{ isRestarting ? "mdi-restart" : "mdi-restart" }}
-                      </v-icon>
                     </v-btn>
 
                     <!-- repeat -->
@@ -96,15 +91,16 @@
                       </v-container>
                       <!-- VOL\-->
                       <div class="vol">
+                        {{ this.currentVolume }}
+
                         <v-btn icon @click="toggleVolumeSlider">
-                          <v-icon color="orange">
+                          <v-icon color="red" style="font-size: 25px">
                             {{
                               showVolumeSlider
                                 ? "mdi-volume-high"
                                 : "mdi-volume-off"
                             }}
                           </v-icon>
-                          {{ this.currentVolume }}
                         </v-btn>
 
                         <input
@@ -137,7 +133,6 @@ export default {
     return {
       isPlaying: false,
       isRepeating: false,
-      isRestarting: false,
       currentTime: 0,
 
       showVolumeSlider: true,
@@ -226,17 +221,6 @@ export default {
         this.currentColorIndex =
           (this.currentColorIndex + 1) % this.colors.length;
       }, duration);
-    },
-
-    restart() {
-      this.isRestarting = !this.isRestarting;
-      if (this.isRestarting) {
-        this.audioElement.src = this.currentTrack.audioPath;
-        this.audioElement.currentTrack = this.currentTime;
-        this.audioElement.addEventListener("timeupdate", this.updateTime);
-      } else {
-        this.audioElement.isNotRestarting();
-      }
     },
 
     setVolume() {
@@ -403,6 +387,12 @@ export default {
   100% {
     color: #fffeff;
   }
+}
+.vol {
+  color: #2569d7;
+  font-size: 25px;
+  font-family: monospace;
+  font-weight: bold;
 }
 </style>
 
