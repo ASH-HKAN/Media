@@ -1,5 +1,7 @@
 <template>
   <div>
+    <div class="bar">ljabcjk</div>
+
     <v-list>
       <v-subheader>Playlist</v-subheader>
       <v-list-item
@@ -82,7 +84,11 @@ export default {
 </script>
 
 <style scoped>
-.v-list-item--active {
-  background-color: rgba(0, 0, 0, 0.2);
+.bar {
+  width: 261px;
+  height: 1125px;
+  flex-shrink: 0;
+  border-radius: 44px;
+  color: #FC8703;
 }
 </style>
