@@ -1,126 +1,131 @@
 <template>
   <div id="playerPage">
     <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
-      <subtitle
-        @clickOnLine="jumpToTime"
-        :currentTime="currentTime"
-        :path="currentTrack.subPath"
-      />
+      <v-main>
+        <subtitle
+          @clickOnLine="jumpToTime"
+          :currentTime="currentTime"
+          :path="currentTrack.subPath"
+        />
+      </v-main>
+      <v-footer app>
+        <v-container fluid>
+          <v-div class="d-flex flex-column justify-space-between align-center">
+            <v-row>
+              <v-col
+                cols="12"
+                sm="8"
+                style="
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  text-align: center;
+                "
+              >
+                <v-card tile color="#010322" dark>
+                  <v-progress-linear
+                    indeterminate
+                    color="red"
+                    reverse
+                    height="0.1px"
+                  ></v-progress-linear>
 
-      <v-container>
-        <v-div class="d-flex flex-column justify-space-between align-center">
-          <v-row>
-            <v-col
-              cols="12"
-              sm="8"
-              style="
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                text-align: center;
-              "
-            >
-              <v-card tile color="#010322" dark>
-                <v-progress-linear
-                  indeterminate
-                  color="red"
-                  reverse
-                  height="0.1px"
-                ></v-progress-linear>
+                  <br />
 
-                <br />
+                  <v-row>
+                    <v-col cols="2" class="mt-2">
+                      <v-btn color="orange" icon class="mx-5" @click="backward">
+                        <v-icon>mdi-rewind</v-icon>
+                      </v-btn>
+                      <!-- p/P -->
+                      <v-btn
+                        color="blue"
+                        icon
+                        large
+                        class="mx-2"
+                        @click="playPause"
+                      >
+                        <v-icon>
+                          {{ isPlaying ? "mdi-pause" : "mdi-play" }}
+                        </v-icon>
+                      </v-btn>
+                      <!-- p/P -->
+                      <v-btn color="orange" icon class="mx-5" @click="forward">
+                        <v-icon>mdi-fast-forward</v-icon>
+                      </v-btn>
 
-                <v-row>
-                  <v-col cols="2" class="mt-2">
-                    <v-btn color="orange" icon class="mx-5" @click="backward">
-                      <v-icon>mdi-rewind</v-icon>
-                    </v-btn>
-                    <!-- p/P -->
-                    <v-btn
-                      color="blue"
-                      icon
-                      large
-                      class="mx-2"
-                      @click="playPause"
-                    >
-                      <v-icon>
-                        {{ isPlaying ? "mdi-pause" : "mdi-play" }}
-                      </v-icon>
-                    </v-btn>
-                    <!-- p/P -->
-                    <v-btn color="orange" icon class="mx-5" @click="forward">
-                      <v-icon>mdi-fast-forward</v-icon>
-                    </v-btn>
+                      <!-- repeat -->
+                      <v-btn icon @click="enableLoop" type="button">
+                        <v-icon color="red">
+                          {{
+                            isRepeating ? "mdi-repeat-once" : "mdi-repeat-off"
+                          }}
+                        </v-icon>
+                      </v-btn>
 
-                    <!-- repeat -->
-                    <v-btn icon @click="enableLoop" type="button">
-                      <v-icon color="red">
-                        {{ isRepeating ? "mdi-repeat-once" : "mdi-repeat-off" }}
-                      </v-icon>
-                    </v-btn>
+                      <!-- repeat -->
+                    </v-col>
 
-                    <!-- repeat -->
-                  </v-col>
+                    <v-col cols="12" sm="5">
+                      <v-app-bar icon color="#010322">
+                        <v-row align="center" class="mt-4">
+                          <v-col cols="12">
+                            <v-slider
+                              color="blue"
+                              :max="currentTrack.duration"
+                              v-model="currentTime"
+                              @change="seek"
+                            >
+                            </v-slider>
+                            <div class="timer">
+                              {{ formatTime }}
+                            </div>
+                          </v-col>
+                        </v-row>
+                        <v-container fluid>
+                          <v-col cols="8">
+                            <v-card-title
+                              :class="{ 'color-animation': animateTitleColor }"
+                              class="track-title"
+                            >
+                              {{ currentTrack.title }}
+                            </v-card-title>
+                          </v-col>
+                        </v-container>
+                        <!-- VOL\-->
+                        <div class="vol">
+                          {{ this.currentVolume }}
 
-                  <v-col cols="12" sm="5">
-                    <v-app-bar icon color="#010322">
-                      <v-row align="center" class="mt-4">
-                        <v-col cols="12">
-                          <v-slider
-                            color="blue"
-                            :max="currentTrack.duration"
-                            v-model="currentTime"
-                            @change="seek"
-                          >
-                          </v-slider>
-                          <div class="timer">
-                            {{ formatTime }}
-                          </div>
-                        </v-col>
-                      </v-row>
-                      <v-container fluid>
-                        <v-col cols="8">
-                          <v-card-title
-                            :class="{ 'color-animation': animateTitleColor }"
-                            class="track-title"
-                          >
-                            {{ currentTrack.title }}
-                          </v-card-title>
-                        </v-col>
-                      </v-container>
-                      <!-- VOL\-->
-                      <div class="vol">
-                        {{ this.currentVolume }}
+                          <v-btn icon @click="toggleVolumeSlider">
+                            <v-icon color="red" style="font-size: 25px">
+                              {{
+                                showVolumeSlider
+                                  ? "mdi-volume-high"
+                                  : "mdi-volume-off"
+                              }}
+                            </v-icon>
+                          </v-btn>
 
-                        <v-btn icon @click="toggleVolumeSlider">
-                          <v-icon color="red" style="font-size: 25px">
-                            {{
-                              showVolumeSlider
-                                ? "mdi-volume-high"
-                                : "mdi-volume-off"
-                            }}
-                          </v-icon>
-                        </v-btn>
-
-                        <input
-                          v-if="showVolumeSlider"
-                          type="range"
-                          v-model="currentVolume"
-                          min="0"
-                          max="100"
-                          @input="setVolume"
-                        />
-                      </div>
-                      <!-- VOL -->
-                    </v-app-bar>
-                  </v-col>
-                </v-row>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-div>
-      </v-container>
+                          <input
+                            v-if="showVolumeSlider"
+                            type="range"
+                            v-model="currentVolume"
+                            min="0"
+                            max="100"
+                            @input="setVolume"
+                          />
+                        </div>
+                        <!-- VOL -->
+                      </v-app-bar>
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-div>
+        </v-container>
+      </v-footer>
     </v-app>
   </div>
 </template>
@@ -393,6 +398,34 @@ export default {
   font-size: 25px;
   font-family: monospace;
   font-weight: bold;
+}
+
+.test1 {
+  width: 366px;
+  height: 557px;
+  flex-shrink: 0;
+  border-radius: 35px;
+  border: 9px solid #000;
+  background: #1e1e1e;
+}
+
+.test2 {
+  border-radius: 30px;
+  background: #111114;
+}
+
+.test3 {
+  width: 171px;
+  height: 176px;
+  flex-shrink: 0;
+  border-radius: 106px;
+}
+
+.test4 {
+  width: 252px;
+  flex-shrink: 0;
+  stroke-width: 30px;
+  opacity: 1;
 }
 </style>
 

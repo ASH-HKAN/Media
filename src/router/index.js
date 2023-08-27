@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Player from "../components/Player.vue";
 import Playlist from "../components/Playlist";
+import HomePagePlayer from "../components/HomePagePlayer.vue";
+import Explor from "../components/Explor.vue";
+
 
 
 Vue.use(VueRouter)
@@ -33,6 +36,23 @@ const routes = [
     name: 'Playlist',
     component: Playlist
   },
+
+
+  {
+    path: '/plyhome',
+    name: 'plyhome',
+    component: HomePagePlayer
+  },
+
+
+  {
+    path: '/Explor',
+    name: 'Explor',
+    component: Explor
+  },
+
+
+
 
 ]
 

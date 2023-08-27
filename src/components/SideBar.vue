@@ -10,7 +10,12 @@
 
     <v-list flat dense class="mt-5">
       <v-list-item-group v-model="selectItem" color="orange">
-        <v-list-item v-for="(item, i) in items" :key="i" class="typography">
+        <v-list-item
+          v-for="(item, i) in items"
+          :key="i"
+          @click="redirectTo(item.route)"
+          class="typography"
+        >
           <v-list-item-icon>
             <v-icon v-text="item.icon"></v-icon>
           </v-list-item-icon>
@@ -66,7 +71,7 @@ export default {
     selectItem: 0,
     drawer: null,
     items: [
-      { icon: "fas fa-satellite-dish", text: "Explore" },
+      { icon: "fas fa-home", text: "Explor", route: "/Explor" },
       { icon: "fas fa-stream", text: "Categories" },
     ],
     collections: [

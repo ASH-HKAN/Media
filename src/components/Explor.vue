@@ -1,8 +1,7 @@
 <template>
   <div>
-    <SideBar />
     <v-list>
-      <v-subheader>Playlist</v-subheader>
+      <v-subheader>Explor</v-subheader>
       <v-list-item
         v-for="(track, index) in tracks"
         :key="index"
@@ -18,12 +17,9 @@
     </v-list>
   </div>
 </template>
-
-
-
-<script>
-import SideBar from "../components/SideBar.vue";
-
+  
+  
+  <script>
 export default {
   data() {
     return {
@@ -60,15 +56,12 @@ export default {
       currentTrackIndex: 0,
     };
   },
-  components: {
-    SideBar,
-  },
 
   props: {},
   methods: {
     playTrack(track) {
       this.$router.push({
-        path: "/demo",
+        path: "/",
         query: {
           title: track.title,
           audioPath: `file/${track.fileName}.mp3`,
@@ -88,8 +81,8 @@ export default {
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .bar {
   width: 261px;
   height: 1125px;
@@ -98,3 +91,4 @@ export default {
   color: #fc8703;
 }
 </style>
+  
