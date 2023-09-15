@@ -224,7 +224,7 @@ export default {
   },
 };
 </script>
-  <style scoped>
+  <style>
 .timer {
   margin-top: -20px;
   margin-left: 700px;
@@ -247,9 +247,9 @@ export default {
 }
 
 .test1 {
-  width: 366px;
-  height: 557px;
-  flex-shrink: 0;
+  margin-top: 499px;
+  margin-left: 10px; /* Adjust the left margin */
+  width: calc(20% - 120px); /* Adjust the total width */
   border-radius: 35px;
   border: 9px solid #000;
   background: #1e1e1e;

@@ -6,8 +6,7 @@ import Playlist from "../components/Playlist";
 import HomePagePlayer from "../components/HomePagePlayer.vue";
 import Explor from "../components/Explor.vue";
 import Language from "../components/Language.vue";
-
-
+import Level from "../components//Level.vue";
 
 Vue.use(VueRouter)
 
@@ -33,7 +32,7 @@ const routes = [
   },
 
   {
-    path: '/Playlist',
+    path: '/playlist',
     name: 'Playlist',
     component: Playlist
   },
@@ -47,19 +46,31 @@ const routes = [
 
 
   {
-    path: '/Explor',
+    path: '/explor',
     name: 'Explor',
     component: Explor
   },
 
 
+  // {
+
+  //   path: '/Language',
+  //   name: 'Language',
+  //   component: Language
+
+  // }
+
   {
 
-    path: '/Language',
+    path: '/level',
     name: 'Language',
-    component: Language
+    component: Level
 
   }
+
+
+
+
 
 ]
 
