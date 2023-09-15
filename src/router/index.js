@@ -5,6 +5,7 @@ import Player from "../components/Player.vue";
 import Playlist from "../components/Playlist";
 import HomePagePlayer from "../components/HomePagePlayer.vue";
 import Explor from "../components/Explor.vue";
+import Language from "../components/Language.vue";
 
 
 
@@ -52,7 +53,13 @@ const routes = [
   },
 
 
+  {
 
+    path: '/Language',
+    name: 'Language',
+    component: Language
+
+  }
 
 ]
 
