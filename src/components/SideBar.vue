@@ -1,12 +1,10 @@
 <template>
   <v-navigation-drawer
-  
     app
     color="gray"
     dark
     class="sideBar flex"
     :clipped="isClipped"
-    
   >
     <h4 class="mt-6 ml-5 white--text">Menu</h4>
 
@@ -104,7 +102,7 @@ export default {
 
 <style>
 .sideBar {
-  width: 100%;
+  width: 300px;
   height: 100%;
 
   top: 8px;

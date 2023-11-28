@@ -6,13 +6,43 @@
     <v-row justify="space-between" align="center">
       <!-- Left Side Boxes -->
       <v-col cols="4">
-        <v-btn class="innerBox" style="background-color: #1e1e1e">
+        <v-btn
+          class="innerBox"
+          style="
+            background-color: #1e1e1e;
+            border: 2px solid #d63c07;
+            color: aliceblue;
+            padding: 16px;
+            border-radius: 20px;
+            margin: 7px;
+          "
+        >
           Level A1
         </v-btn>
-        <v-btn class="innerBox" style="background-color: #1e1e1e">
+        <v-btn
+          class="innerBox"
+          style="
+            background-color: #1e1e1e;
+            border: 2px solid #d63c07;
+            color: aliceblue;
+            padding: 16px;
+            border-radius: 20px;
+            margin: 7px;
+          "
+        >
           Level A2
         </v-btn>
-        <v-btn class="innerBox" style="background-color: #1e1e1e">
+        <v-btn
+          class="innerBox"
+          style="
+            background-color: #1e1e1e;
+            border: 2px solid #d63c07;
+            color: aliceblue;
+            padding: 16px;
+            border-radius: 20px;
+            margin: 7px;
+          "
+        >
           Level B1
         </v-btn>
       </v-col>
@@ -20,13 +50,43 @@
 
       <!-- Right Side Boxes -->
       <v-col cols="5">
-        <v-btn class="innerBox rightSide" style="background-color: #1e1e1e">
+        <v-btn
+          class="innerBox rightSide"
+          style="
+            background-color: #1e1e1e;
+            border: 2px solid #d63c07;
+            color: aliceblue;
+            padding: 16px;
+            border-radius: 20px;
+            margin: 7px;
+          "
+        >
           Level B2
         </v-btn>
-        <v-btn class="innerBox rightSide" style="background-color: #1e1e1e">
+        <v-btn
+          class="innerBox rightSide"
+          style="
+            background-color: #1e1e1e;
+            border: 2px solid #d63c07;
+            color: aliceblue;
+            padding: 16px;
+            border-radius: 20px;
+            margin: 7px;
+          "
+        >
           Level C1
         </v-btn>
-        <v-btn class="innerBox rightSide" style="background-color: #1e1e1e">
+        <v-btn
+          class="innerBox rightSide"
+          style="
+            background-color: #1e1e1e;
+            border: 2px solid #d63c07;
+            color: aliceblue;
+            padding: 16px;
+            border-radius: 20px;
+            margin: 7px;
+          "
+        >
           Level C2
         </v-btn>
       </v-col>
@@ -34,12 +94,11 @@
   </v-container>
 </template>
 
-  
-  <script>
+<script>
 export default {};
 </script>
-  
- <style scoped>
+
+<style scoped>
 .lang-box {
   margin-top: 547px;
   margin-left: -4040px; /* Adjust the left margin */
@@ -51,17 +110,6 @@ export default {};
   background: #1e1e1e;
 }
 
-.innerBox {
-  border-radius: 20px;
-  border: 2px solid #d63c07;
-  flex-shrink: 0;
-  background-color: #1e1e1e;
-  text-align: center;
-  padding: 16px; /* Adjust the padding value */
-  color: aliceblue;
-  margin: 7px; /* Add margin to create space between the boxes */
-}
-
 .divider {
   width: 1px;
   height: 138px;
@@ -69,4 +117,3 @@ export default {};
   margin-right: -40px;
 }
 </style>
-

@@ -1,67 +1,133 @@
 <template>
-  <v-container id="language" class="lang-box" fluid>
+  <v-container
+    class="d-flex flex-column align-center justify-end lang-box"
+    fluid
+  >
     <v-row justify="space-between" align="center">
-      <!-- Left Side Boxes -->
+      <v-row>
+        <v-col cols="6">
+          <v-btn
+            class="innerBox"
+            style="
+              background-color: #1e1e1e;
+              border: 2px solid #d63c07;
+              color: aliceblue;
+              padding: 8px; /* Adjusted padding */
+              border-radius: 8px; /* Adjusted border-radius */
+              margin-left: 20px;
+            "
+          >
+            Persisch
+          </v-btn>
+        </v-col>
+        <v-col cols="2">
+          <v-btn
+            class="innerBox"
+            style="
+              background-color: #1e1e1e;
+              border: 2px solid #d63c07;
+              color: aliceblue;
+              padding: 12px; /* Adjusted padding */
+              border-radius: 8px; /* Adjusted border-radius */
+              margin-left: 40px;
+            "
+          >
+            Deutsch
+          </v-btn>
+        </v-col>
+      </v-row>
 
-      <v-col class="box-positions" cols="4">
-        <v-btn class="transparent" style="height: 100%; width: 100%">
-          <span style="color: aliceblue">Eniglish</span>
-        </v-btn>
-      </v-col>
-      <v-col class="box-positions" cols="4">
-        <v-btn class="transparent" style="height: 100%; width: 100%">
-          <span style="color: aliceblue">Deutsch</span>
-        </v-btn>
-      </v-col>
-      <v-col class="box-positions" cols="4">
-        <v-btn class="transparent" style="height: 100%; width: 100%">
-          <span style="color: aliceblue">Türkish</span>
-        </v-btn>
-      </v-col>
+      <v-row>
+        <v-col cols="6">
+          <v-btn
+            class="innerBox"
+            style="
+              background-color: #1e1e1e;
+              border: 2px solid #d63c07;
+              color: aliceblue;
+              padding: 12px; /* Adjusted padding */
+              border-radius: 8px; /* Adjusted border-radius */
+              margin-left: 20px;
+            "
+          >
+            France
+          </v-btn>
+        </v-col>
+        <v-col cols="6">
+          <v-btn
+            class="innerBox"
+            style="
+              background-color: #1e1e1e;
+              border: 2px solid #d63c07;
+              color: aliceblue;
+              padding: 12px; /* Adjusted padding */
+              border-radius: 8px; /* Adjusted border-radius */
+              margin-left: 40px;
+            "
+          >
+            English
+          </v-btn>
+        </v-col>
+      </v-row>
 
-      <!-- Right Side Boxes -->
-      <v-col class="box-positions" cols="4">
-        <v-btn class="transparent" style="height: 100%; width: 100%">
-          <span style="color: aliceblue">Persian</span>
-        </v-btn>
-      </v-col>
-      <v-col class="box-positions" cols="4">
-        <v-btn class="transparent" style="height: 100%; width: 100%">
-          <span style="color: aliceblue">France</span>
-        </v-btn>
-      </v-col>
-      <v-col class="box-positions" cols="4">
-        <v-btn class="transparent" style="height: 100%; width: 100%">
-          <span style="color: aliceblue">Spanish</span>
-        </v-btn>
-      </v-col>
+      <v-row>
+        <v-col cols="6">
+          <v-btn
+            style="
+              background-color: #1e1e1e;
+              border: 2px solid #d63c07;
+              color: aliceblue;
+              padding: 12px; /* Adjusted padding */
+              border-radius: 8px; /* Adjusted border-radius */
+              margin-left: 30px;
+            "
+          >
+            China
+          </v-btn>
+        </v-col>
+        <v-col cols="6">
+          <v-btn
+            class="innerBox"
+            style="
+              background-color: #1e1e1e;
+              border: 2px solid #d63c07;
+              color: aliceblue;
+              padding: 12px; /* Adjusted padding */
+              border-radius: 8px; /* Adjusted border-radius */
+              margin-left: 40px;
+            "
+          >
+            Turkey
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-row>
   </v-container>
 </template>
-  
-  <script>
+
+<script>
 export default {};
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .lang-box {
-  margin-top: 546px;
-  margin-left: 10px; /* Adjust the left margin */
-  width: calc(6.4% - 10px); /* Adjust the total width */
+  margin-top: 548px;
+  margin-left: 20px; /* Adjust the left margin */
+  width: 300px; /* Adjust the width as needed */
+  height: 200px;
+  flex-shrink: 0;
   border-radius: 35px;
   border: 9px solid #000;
   background: #1e1e1e;
 }
-.box-positions {
-  position: relative;
-  border-radius: 20px;
-  border: 5px solid #fff;
+
+.innerBox {
+  border-radius: 8px; /* Adjusted border-radius */
+  border: 2px solid #d63c07;
   flex-shrink: 0;
   background-color: #1e1e1e;
   text-align: center;
-  padding: 13px;
-  color: aliceblue;
-  margin: 10px; /* Add margin to create space between the boxes */
+  color: rgb(11, 105, 186);
+  margin-left: 15px; /* Adjusted margin */
 }
 </style>
-  

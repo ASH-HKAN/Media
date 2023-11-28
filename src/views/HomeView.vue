@@ -42,4 +42,7 @@ export default {
   background: #18181d;
   color: rgba(0, 0, 0, 0.87);
 }
+body {
+  background-color: #18181d;
+}
 </style>
