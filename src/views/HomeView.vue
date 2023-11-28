@@ -2,10 +2,11 @@
   <v-app>
     <v-row>
       <SideBar />
-      <!-- <PlayerHomePage /> -->
       <Language />
       <Level />
+      <!-- <PlayerHomePage /> -->
     </v-row>
+    <categories />
   </v-app>
 </template>
 
@@ -15,6 +16,7 @@ import PlayerHomePage from "../components/HomePagePlayer.vue";
 import PlayList from "../components/Playlist.vue";
 import Language from "../components/Language.vue";
 import Level from "../components/Level.vue";
+import Categories from "../components/Categories.vue";
 
 import { Carousel3d, Slide } from "vue-carousel-3d";
 
@@ -29,6 +31,7 @@ export default {
     PlayList,
     Language,
     Level,
+    Categories,
     Carousel3d,
     Slide,
   },

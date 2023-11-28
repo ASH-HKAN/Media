@@ -45,7 +45,7 @@ export default {};
   
   <style scoped>
 .lang-box {
-  margin-top: 447px;
+  margin-top: 546px;
   margin-left: 10px; /* Adjust the left margin */
   width: calc(6.4% - 10px); /* Adjust the total width */
   border-radius: 35px;
