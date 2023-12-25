@@ -1,12 +1,16 @@
 <template>
   <v-app>
+    <SideBar />
     <v-row>
-      <SideBar />
       <Language />
       <Level />
+      <!-- <v-row> -->
       <!-- <PlayerHomePage /> -->
+      <!-- </v-row> -->
     </v-row>
-    <categories />
+    <v-row>
+      <categories />
+    </v-row>
   </v-app>
 </template>
 

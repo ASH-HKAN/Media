@@ -51,24 +51,13 @@ const routes = [
     component: Explor
   },
 
-
-  // {
-
-  //   path: '/Language',
-  //   name: 'Language',
-  //   component: Language
-
-  // }
-
   {
 
     path: '/level',
-    name: 'Language',
+    name: 'Level',
     component: Level
 
   }
-
-
 
 
 
