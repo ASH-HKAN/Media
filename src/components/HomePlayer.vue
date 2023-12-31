@@ -8,20 +8,33 @@
       <v-row class="text-center">
         <v-col>
           <v-slider
-            color="blue"
+            color="#D63C07"
             :max="currentTrack.duration"
             v-model="currentTime"
             @change="seek"
-          >
-          </v-slider>
-          {{ this.timeFormat }}
+          ></v-slider>
+
+          <!-- Move timeFormat to the right under the slider -->
+          <v-row style="color: aliceblue; margin-left: 290px">
+            {{ this.timeFormat }}
+          </v-row>
+
           <br />
           <br />
           <br />
 
-          <v-btn @click="backward">
+          <v-btn
+            @click="backward"
+            :style="{
+              width: '0px',
+              height: '0px',
+              backgroundColor: 'transparent',
+              color: '#D63C07',
+            }"
+          >
             <v-icon> mdi-rewind </v-icon>
           </v-btn>
+
           <!-- p/P -->
           <v-btn
             @click="playPause"
@@ -41,7 +54,15 @@
           </v-btn>
           <!-- p/P -->
 
-          <v-btn @click="forward">
+          <v-btn
+            :style="{
+              width: '0px',
+              height: '0px',
+              backgroundColor: 'transparent',
+              color: '#D63C07',
+            }"
+            @click="forward"
+          >
             <v-icon> mdi-fast-forward</v-icon>
           </v-btn>
         </v-col>
@@ -144,7 +165,7 @@ export default {
   background: #111114;
   margin-left: 740px;
   border: 9px solid #000;
-  background: #1e1e1e;
+  background: #111114;
 }
 
 .img {
