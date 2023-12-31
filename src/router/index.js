@@ -6,6 +6,7 @@ import Playlist from "../components/Playlist";
 import Explor from "../components/Explor.vue";
 import Language from "../components/Language.vue";
 import Level from "../components//Level.vue";
+import homePlayer from "../components/HomePlayer.vue";
 
 Vue.use(VueRouter)
 
@@ -50,6 +51,13 @@ const routes = [
     path: '/level',
     name: 'Level',
     component: Level
+
+  },
+  {
+
+    path: '/hP',
+    name: 'homePlayer',
+    component: homePlayer
 
   }
 

@@ -1,14 +1,53 @@
 <template>
-  <div class="ss">
-    <div class="img"></div>
-    <p class="additional-text">Verhältnis</p>
+  <v-app>
+    <div class="ss">
+      <div class="img"></div>
+      <p class="additional-text">Verhältnis</p>
 
-    <p class="additional-text2">Studieren - C1</p>
-  </div>
+      <p class="additional-text2">Studieren - C1</p>
+
+      <div>
+        <v-progress-linear
+          color="lime"
+          indeterminate
+          reverse
+        ></v-progress-linear>
+      </div>
+      <br />
+
+      <v-row>
+        <v-btn @click="playPause">
+          <v-icon> {{ isplaying ? "mdi-pause " : " mdi-play" }} </v-icon></v-btn
+        >
+      </v-row>
+    </div>
+  </v-app>
 </template>
   
   <script>
-export default {};
+export default {
+  data() {
+    return {
+      isPlaying: false,
+      audioElement: new Audio(),
+    };
+  },
+
+  methods: {
+    playPause() {
+      this.isPlaying = !this.isPlaying;
+      if (this.isPlaying) {
+        this.audioElement.src = this.currentTrack.audioPath;
+        console.log("scscscs");
+        this.audioElement.play();
+        // this.audioElement.currentTime = this.currentTime;
+        // this.audioElement.addEventListener("timeupdate", this.updateTime);
+      } else {
+        this.audioElement.pause();
+      }
+    },
+  },
+};
 </script>
   
   <style>
