@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Player from "../components/Player.vue";
 import Playlist from "../components/Playlist";
-import HomePagePlayer from "../components/HomePagePlayer.vue";
 import Explor from "../components/Explor.vue";
 import Language from "../components/Language.vue";
 import Level from "../components//Level.vue";
@@ -38,11 +37,6 @@ const routes = [
   },
 
 
-  {
-    path: '/plyhome',
-    name: 'plyhome',
-    component: HomePagePlayer
-  },
 
 
   {
