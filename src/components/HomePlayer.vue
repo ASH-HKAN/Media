@@ -3,26 +3,38 @@
     <div class="ss">
       <div class="img"></div>
       <p class="additional-text">Verhältnis</p>
-
       <p class="additional-text2">Studieren - C1</p>
 
-      <div>
-        <v-progress-linear
-          color="lime"
-          indeterminate
-          reverse
-        ></v-progress-linear>
-      </div>
-      <br />
-
-      <v-row>
-        <v-btn @click="playPause">
-          <v-icon> {{ isplaying ? "mdi-pause " : " mdi-play" }} </v-icon></v-btn
-        >
+      <v-row class="text-center">
+        <v-col>
+          <v-progress-linear
+            color="lime"
+            indeterminate
+            reverse
+          ></v-progress-linear>
+          <br />
+          <v-btn
+            @click="playPause"
+            icon
+            :style="{
+              borderRadius: '50%',
+              width: '56px',
+              height: '56px',
+              backgroundColor: 'transparent',
+              border: '2px solid #FFA500',
+              color: '#FFA500',
+            }"
+            @mouseover="hovered = true"
+            @mouseleave="hovered = false"
+          >
+            <v-icon> {{ isPlaying ? "mdi-pause " : "mdi-play" }} </v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
     </div>
   </v-app>
 </template>
+
   
   <script>
 export default {
@@ -30,6 +42,8 @@ export default {
   data() {
     return {
       isPlaying: false,
+      hovered: false,
+
       audioElement: new Audio(),
     };
   },
