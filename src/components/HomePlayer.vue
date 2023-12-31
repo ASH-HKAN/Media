@@ -14,7 +14,6 @@
             @change="seek"
           ></v-slider>
 
-          <!-- Move timeFormat to the right under the slider -->
           <v-row style="color: aliceblue; margin-left: 290px">
             {{ this.timeFormat }}
           </v-row>
@@ -23,6 +22,21 @@
           <br />
           <br />
 
+          <v-btn
+            @click="enableLoop"
+            type="button"
+            :style="{
+              width: '0px',
+              height: '0px',
+              backgroundColor: 'transparent',
+              color: '#D63C07',
+            }"
+          >
+            <v-icon>
+              {{ this.repeater ? "mdi-repeat-once" : "mdi-repeat-off" }}</v-icon
+            >
+          </v-btn>
+          <!-- back -->
           <v-btn
             @click="backward"
             :style="{
@@ -34,6 +48,7 @@
           >
             <v-icon> mdi-rewind </v-icon>
           </v-btn>
+          <!-- back -->
 
           <!-- p/P -->
           <v-btn
@@ -78,6 +93,7 @@ export default {
   data() {
     return {
       isPlaying: false,
+      repeater: false,
       hovered: false,
       currentTime: 0,
 
@@ -95,6 +111,16 @@ export default {
         this.audioElement.addEventListener("timeupdate", this.updateTime);
       } else {
         this.audioElement.pause();
+      }
+    },
+
+    enableLoop() {
+      this.repeater = !this.repeater;
+      if (this.repeater) {
+        this.audioElement.loop = true;
+        this.audioElement.onload();
+      } else {
+        this.audioElement.onload();
       }
     },
 
@@ -146,7 +172,7 @@ export default {
     timeFormat() {
       let minutes = Math.floor(this.currentTime / 60);
       let seconds = Math.floor(this.currentTime % 60);
-      if (this.currentTime < 10) {
+      if (seconds < 10) {
         seconds = `0${seconds}`;
       }
       return `${minutes} : ${seconds}`;
