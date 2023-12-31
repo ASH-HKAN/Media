@@ -174,6 +174,7 @@ export default {
     playPause() {
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
+        
         this.audioElement.src = this.currentTrack.audioPath;
         this.audioElement.play();
         this.audioElement.currentTime = this.currentTime;

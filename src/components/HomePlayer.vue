@@ -26,6 +26,7 @@
   
   <script>
 export default {
+  components: {},
   data() {
     return {
       isPlaying: false,
@@ -38,13 +39,21 @@ export default {
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
         this.audioElement.src = this.currentTrack.audioPath;
-        console.log("scscscs");
         this.audioElement.play();
-        // this.audioElement.currentTime = this.currentTime;
-        // this.audioElement.addEventListener("timeupdate", this.updateTime);
       } else {
         this.audioElement.pause();
       }
+    },
+  },
+
+  computed: {
+    currentTrack() {
+      return {
+        title: this.$route.query.title,
+        duration: this.$route.query.duration,
+        audioPath: this.$route.query.audioPath,
+        subPath: this.$route.query.subPath,
+      };
     },
   },
 };
