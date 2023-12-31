@@ -13,6 +13,13 @@
             reverse
           ></v-progress-linear>
           <br />
+          <br />
+          <br />
+
+          <v-btn @click="backward">
+            <v-icon> mdi-rewind </v-icon>
+          </v-btn>
+          <!-- p/P -->
           <v-btn
             @click="playPause"
             icon
@@ -21,13 +28,18 @@
               width: '56px',
               height: '56px',
               backgroundColor: 'transparent',
-              border: '2px solid #FFA500',
-              color: '#FFA500',
+              border: '2px solid #fff',
+              color: '#D63C07',
             }"
             @mouseover="hovered = true"
             @mouseleave="hovered = false"
           >
             <v-icon> {{ isPlaying ? "mdi-pause " : "mdi-play" }} </v-icon>
+          </v-btn>
+          <!-- p/P -->
+
+          <v-btn @click="forward">
+            <v-icon> mdi-fast-forward</v-icon>
           </v-btn>
         </v-col>
       </v-row>
@@ -43,6 +55,7 @@ export default {
     return {
       isPlaying: false,
       hovered: false,
+      currentTime: 0,
 
       audioElement: new Audio(),
     };
@@ -54,9 +67,37 @@ export default {
       if (this.isPlaying) {
         this.audioElement.src = this.currentTrack.audioPath;
         this.audioElement.play();
+        this.audioElement.currentTime = this.currentTime;
+        this.audioElement.addEventListener("timeupdate", this.updateTime);
       } else {
         this.audioElement.pause();
       }
+
+      console.log(this.currentTime, "dssssssssss");
+    },
+
+    backward() {
+      if (this.isPlaying) {
+        this.currentTime -= 5;
+        this.audioElement.currentTime = this.currentTime;
+      } else {
+        this.currentTime -= 5;
+      }
+      console.log(this.currentTime, "back");
+    },
+
+    forward() {
+      if (this.isPlaying) {
+        this.currentTime += 5;
+        this.audioElement.currentTime = this.currentTime;
+      } else {
+        this.currentTime += 5;
+      }
+      console.log(this.currentTime, "forw");
+    },
+
+    updateTime() {
+      this.currentTime = this.audioElement.currentTime;
     },
   },
 
