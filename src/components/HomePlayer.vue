@@ -7,11 +7,14 @@
 
       <v-row class="text-center">
         <v-col>
-          <v-progress-linear
-            color="lime"
-            indeterminate
-            reverse
-          ></v-progress-linear>
+          <v-slider
+            color="blue"
+            :max="currentTrack.duration"
+            v-model="currentTime"
+            @change="seek"
+          >
+          </v-slider>
+          {{ this.timeFormat }}
           <br />
           <br />
           <br />
@@ -72,8 +75,6 @@ export default {
       } else {
         this.audioElement.pause();
       }
-
-      console.log(this.currentTime, "dssssssssss");
     },
 
     backward() {
@@ -98,6 +99,16 @@ export default {
 
     updateTime() {
       this.currentTime = this.audioElement.currentTime;
+      if (this.currentTime >= this.currentTrack.duration) {
+        this.isPlaying = false;
+        this.audioElement.pause();
+        this.currentTime = 0;
+        this.audioElement.currentTime = 0;
+      }
+    },
+
+    seek() {
+      this.audioElement.currentTime = this.currentTime;
     },
   },
 
@@ -109,6 +120,15 @@ export default {
         audioPath: this.$route.query.audioPath,
         subPath: this.$route.query.subPath,
       };
+    },
+
+    timeFormat() {
+      let minutes = Math.floor(this.currentTime / 60);
+      let seconds = Math.floor(this.currentTime % 60);
+      if (this.currentTime < 10) {
+        seconds = `0${seconds}`;
+      }
+      return `${minutes} : ${seconds}`;
     },
   },
 };
