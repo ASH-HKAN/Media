@@ -15,13 +15,15 @@ import PlayList from "../components/Playlist.vue";
 import Language from "../components/Language.vue";
 import Level from "../components/Level.vue";
 // import Categories from "../components/Categories.vue";
-import HomePlayer from "@/components/HomePlayer.vue";
+import HomePlayer from "../components/HomePlayer.vue";
 
-import { Carousel3d, Slide } from "vue-carousel-3d";
+// import { Carousel3d, Slide } from "vue-carousel-3d";
 
 export default {
   data: () => {
-    return {};
+    return {
+      audioElement: new Audio(),
+    };
   },
 
   components: {
@@ -31,8 +33,8 @@ export default {
     Language,
     Level,
     // Categories,
-    Carousel3d,
-    Slide,
+    // Carousel3d,
+    // Slide,
   },
 };
 </script>

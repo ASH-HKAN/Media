@@ -2,11 +2,13 @@
   <v-app>
     <div class="ss">
       <!-- it fill be -->
-      <div class="img"></div>
-      <p class="additional-text">Verhältnis</p>
+      <img class="img" src="alan.jpg" alt="Image Description" />
+      <p class="additional-text">{{ currentTrack.title }}</p>
       <p class="additional-text2">Studieren - C1</p>
       <!-- it fill be -->
-
+      <v-row style="color: aliceblue; margin-left: 290px">
+        {{ this.timeFormat }}
+      </v-row>
       <v-row class="text-center">
         <v-col>
           <v-slider
@@ -16,26 +18,29 @@
             @change="seek"
           ></v-slider>
           <!-- vol -->
-          <div>
-            <v-btn @click="toggleVolume">
-              <v-icon>
-                {{ volIcon ? "mdi-volume-high" : "mdi-volume-off" }}</v-icon
-              >
-            </v-btn>
-            {{ this.currentVolume }}
-            <input
-              v-if="volIcon"
-              v-model="currentVolume"
-              @input="setVolume"
-              type="range"
-              min="0"
-              max="100"
-            />
-          </div>
+          <v-btn
+            @click="toggleVolume"
+            :style="{
+              width: '0px',
+              height: '0px',
+              backgroundColor: 'transparent',
+              color: '#fff',
+            }"
+          >
+            <v-icon>
+              {{ volIcon ? "mdi-volume-high" : "mdi-volume-off" }}</v-icon
+            >
+          </v-btn>
+          <input
+            v-if="volIcon"
+            v-model="currentVolume"
+            @input="setVolume"
+            type="range"
+            min="0"
+            max="100"
+          />
+
           <!-- vol -->
-          <v-row style="color: aliceblue; margin-left: 290px">
-            {{ this.timeFormat }}
-          </v-row>
 
           <br />
           <br />
@@ -185,10 +190,10 @@ export default {
     toggleVolume() {
       this.volIcon = !this.volIcon;
       if (this.volIcon == false) {
-        this.savedVolume = this.currentVolume; // ذخیره کردن حجم فعلی
+        this.savedVolume = this.currentVolume;
         this.currentVolume = 0;
       } else {
-        this.currentVolume = this.savedVolume; // بازگرداندن حجم ذخیره شده
+        this.currentVolume = this.savedVolume;
       }
       this.audioElement.volume = this.currentVolume / 100;
     },
