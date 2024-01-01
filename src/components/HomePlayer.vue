@@ -1,9 +1,11 @@
 <template>
   <v-app>
     <div class="ss">
+      <!-- it fill be -->
       <div class="img"></div>
       <p class="additional-text">Verhältnis</p>
       <p class="additional-text2">Studieren - C1</p>
+      <!-- it fill be -->
 
       <v-row class="text-center">
         <v-col>
@@ -13,7 +15,24 @@
             v-model="currentTime"
             @change="seek"
           ></v-slider>
-
+          <!-- vol -->
+          <div>
+            <v-btn @click="toggleVolume">
+              <v-icon>
+                {{ volIcon ? "mdi-volume-high" : "mdi-volume-off" }}</v-icon
+              >
+            </v-btn>
+            {{ this.currentVolume }}
+            <input
+              v-if="volIcon"
+              v-model="currentVolume"
+              @input="setVolume"
+              type="range"
+              min="0"
+              max="100"
+            />
+          </div>
+          <!-- vol -->
           <v-row style="color: aliceblue; margin-left: 290px">
             {{ this.timeFormat }}
           </v-row>
@@ -95,8 +114,10 @@ export default {
       isPlaying: false,
       repeater: false,
       hovered: false,
+      volIcon: true,
+      savedVolume: 0,
       currentTime: 0,
-
+      currentVolume: 50,
       audioElement: new Audio(),
     };
   },
@@ -111,16 +132,6 @@ export default {
         this.audioElement.addEventListener("timeupdate", this.updateTime);
       } else {
         this.audioElement.pause();
-      }
-    },
-
-    enableLoop() {
-      this.repeater = !this.repeater;
-      if (this.repeater) {
-        this.audioElement.loop = true;
-        this.audioElement.onload();
-      } else {
-        this.audioElement.onload();
       }
     },
 
@@ -156,6 +167,30 @@ export default {
 
     seek() {
       this.audioElement.currentTime = this.currentTime;
+    },
+
+    enableLoop() {
+      this.repeater = !this.repeater;
+      if (this.repeater) {
+        this.audioElement.loop = true;
+        this.audioElement.onload();
+      } else {
+        this.audioElement.onload();
+      }
+    },
+
+    setVolume() {
+      this.audioElement.volume = this.currentVolume / 100;
+    },
+    toggleVolume() {
+      this.volIcon = !this.volIcon;
+      if (this.volIcon == false) {
+        this.savedVolume = this.currentVolume; // ذخیره کردن حجم فعلی
+        this.currentVolume = 0;
+      } else {
+        this.currentVolume = this.savedVolume; // بازگرداندن حجم ذخیره شده
+      }
+      this.audioElement.volume = this.currentVolume / 100;
     },
   },
 
