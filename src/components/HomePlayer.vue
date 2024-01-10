@@ -46,6 +46,7 @@
           <br />
           <br />
 
+          <!-- tekrar nemishe -->
           <v-btn
             @click="enableLoop"
             type="button"
@@ -132,6 +133,8 @@ export default {
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
         this.audioElement.src = this.currentTrack.audioPath;
+        console.log("Audio Path:", this.currentTrack);
+
         this.audioElement.play();
         this.audioElement.currentTime = this.currentTime;
         this.audioElement.addEventListener("timeupdate", this.updateTime);

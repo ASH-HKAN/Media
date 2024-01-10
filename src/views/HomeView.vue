@@ -5,6 +5,7 @@
       <Language />
       <Level />
     </v-row>
+
     <HomePlayer />
   </v-app>
 </template>
@@ -14,16 +15,11 @@ import SideBar from "../components/SideBar.vue";
 import PlayList from "../components/Playlist.vue";
 import Language from "../components/Language.vue";
 import Level from "../components/Level.vue";
-// import Categories from "../components/Categories.vue";
 import HomePlayer from "../components/HomePlayer.vue";
 
-// import { Carousel3d, Slide } from "vue-carousel-3d";
-
 export default {
-  data: () => {
-    return {
-      audioElement: new Audio(),
-    };
+  data() {
+    return {};
   },
 
   components: {
@@ -32,12 +28,12 @@ export default {
     PlayList,
     Language,
     Level,
-    // Categories,
-    // Carousel3d,
-    // Slide,
   },
+
+  computed: {},
 };
 </script>
+
 <style>
 .theme--light.v-application {
   background: #18181d;
