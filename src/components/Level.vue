@@ -16,8 +16,9 @@
             border-radius: 20px;
             margin: 7px;
           "
+          @click="playTrack(100)"
         >
-          Level A1
+          Eminem
         </v-btn>
         <v-btn
           class="innerBox"
@@ -29,11 +30,12 @@
             border-radius: 20px;
             margin: 7px;
           "
+          @click="playTrack(101)"
         >
-          Level A2
+          Dua
         </v-btn>
         <v-btn
-          class="innerBox"
+          class="innerBox rightSide"
           style="
             background-color: #1e1e1e;
             border: 2px solid #d63c07;
@@ -42,9 +44,10 @@
             border-radius: 20px;
             margin: 7px;
           "
+          @click="playTrack(102)"
         >
-          Level C2</v-btn
-        >
+          Anchor
+        </v-btn>
       </v-col>
       <div class="divider"></div>
 
@@ -60,8 +63,9 @@
             border-radius: 20px;
             margin: 7px;
           "
+          @click="playTrack(100)"
         >
-          Level B2
+          Eminem
         </v-btn>
         <v-btn
           class="innerBox rightSide"
@@ -74,7 +78,7 @@
             margin: 7px;
           "
         >
-          Level C1
+          <div @click="playTrack(103)">English</div>
         </v-btn>
         <v-btn
           class="innerBox rightSide"
@@ -87,18 +91,7 @@
             margin: 7px;
           "
         >
-          <v-list-item
-            v-for="(track, index) in tracks"
-            :key="index"
-            @click="playTrack(track)"
-          >
-            <v-list-item-content>
-              <v-list-item-title>{{ track.title }}</v-list-item-title>
-              <v-list-item-subtitle>{{
-                formatDuration(track.duration)
-              }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+          <v-list-item @click="playTrack(102)"> Anchor </v-list-item>
         </v-btn>
       </v-col>
     </v-row>
@@ -117,18 +110,21 @@ export default {
           title: "Eminem",
           duration: 365,
           fileName: "E",
+          trackCode: 100,
         },
         {
           Lesson: "2",
           title: "Dua Lipa",
           duration: 137,
           fileName: "B",
+          trackCode: 101,
         },
         {
           Lesson: "3",
           title: "Anchor",
           duration: 257,
           fileName: "A",
+          trackCode: 102,
         },
 
         {
@@ -136,6 +132,7 @@ export default {
           title: "English",
           duration: 393,
           fileName: "T",
+          trackCode: 103,
         },
       ],
       audioElement: new Audio(),
@@ -145,18 +142,21 @@ export default {
 
   props: {},
   methods: {
-    playTrack(track) {
-      this.$router.push({
-        path: "/",
-        query: {
-          title: track.title,
-          audioPath: `file/${track.fileName}.mp3`,
-          subPath: `file/${track.fileName}.lrc`,
-          duration: track.duration,
-        },
+    playTrack(trackCode) {
+      const track = this.tracks.find((track) => track.trackCode === trackCode);
 
-        params: {},
-      });
+      if (track) {
+        this.$router.push({
+          path: "/",
+          query: {
+            title: track.title,
+            audioPath: `file/${track.fileName}.mp3`,
+            subPath: `file/${track.fileName}.lrc`,
+            duration: track.duration,
+          },
+          params: {},
+        });
+      }
     },
 
     formatDuration(duration) {
