@@ -43,8 +43,8 @@
             margin: 7px;
           "
         >
-          Level B1
-        </v-btn>
+          Level C2</v-btn
+        >
       </v-col>
       <div class="divider"></div>
 
@@ -109,6 +109,8 @@
 export default {
   data() {
     return {
+      isPlaying: false,
+      currentTime: 0,
       tracks: [
         {
           Lesson: "1",
@@ -141,13 +143,13 @@ export default {
     };
   },
 
+  props: {},
   methods: {
     playTrack(track) {
       this.$router.push({
         path: "/",
-
         query: {
-          title: title.track,
+          title: track.title,
           audioPath: `file/${track.fileName}.mp3`,
           subPath: `file/${track.fileName}.lrc`,
           duration: track.duration,
