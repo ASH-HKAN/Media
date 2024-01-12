@@ -68,8 +68,8 @@ export default {
   methods: {
     playTrack(track) {
       this.$router.push({
-        // demo
-        path: "/hP",
+        // hP
+        path: "/demo",
         query: {
           title: track.title,
           audioPath: `file/${track.fileName}.mp3`,

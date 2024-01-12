@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Player from "../components/Player.vue";
 import Playlist from "../components/Playlist";
-import Explor from "../components/Explor.vue";
+// import Explor from "../components/Explor.vue";
 import Language from "../components/Language.vue";
 import Level from "../components//Level.vue";
 import homePlayer from "../components/HomePlayer.vue";
@@ -40,11 +40,11 @@ const routes = [
 
 
 
-  {
-    path: '/explor',
-    name: 'Explor',
-    component: Explor
-  },
+  // {
+  //   path: '/explor',
+  //   name: 'Explor',
+  //   component: Explor
+  // },
 
   {
 
