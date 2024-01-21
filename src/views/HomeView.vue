@@ -5,6 +5,7 @@
       <Language />
       <Level />
     </v-row>
+    <!-- <Categories /> -->
 
     <HomePlayer />
   </v-app>
@@ -16,6 +17,7 @@ import PlayList from "../components/Playlist.vue";
 import Language from "../components/Language.vue";
 import Level from "../components/Level.vue";
 import HomePlayer from "../components/HomePlayer.vue";
+import Categories from "../components/Categories.vue";
 
 export default {
   data() {
@@ -28,6 +30,7 @@ export default {
     PlayList,
     Language,
     Level,
+    Categories,
   },
 
   computed: {},
