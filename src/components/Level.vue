@@ -91,7 +91,7 @@
             margin: 7px;
           "
         >
-          <v-list-item @click="playTrack(102)"> Anchor </v-list-item>
+          <v-list-item @click="playTrack(102)"> Anchor</v-list-item>
         </v-btn>
       </v-col>
     </v-row>

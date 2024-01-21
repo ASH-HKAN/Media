@@ -71,8 +71,12 @@ export default {
     selectItem: 0,
     drawer: null,
     items: [
-      { icon: "fas fa-home", text: "Explor", route: "/Explor" },
-      { icon: "fas fa-stream", text: "Categories" },
+      { icon: "fas fa-home", text: "Explor" },
+      {
+        icon: "fas fa-stream",
+        text: "Categories",
+        route: "/categories",
+      },
     ],
     collections: [
       { icon: "fas fa-heart", text: "Recent", route: "/Recent" },
