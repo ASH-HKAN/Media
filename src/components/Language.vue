@@ -22,6 +22,7 @@
         </v-col>
         <v-col cols="2">
           <v-btn
+            @click="pushLanguage"
             class="innerBox"
             style="
               background-color: #1e1e1e;
@@ -82,7 +83,7 @@
               margin-left: 30px;
             "
           >
-            China
+            Italy
           </v-btn>
         </v-col>
         <v-col cols="6">
@@ -97,7 +98,7 @@
               margin-left: 40px;
             "
           >
-            Turkey
+            Spanish
           </v-btn>
         </v-col>
       </v-row>
@@ -106,7 +107,48 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      deutsch: false,
+      italy: false,
+      persian: false,
+      france: false,
+      spanish: false,
+      english: false,
+    };
+  },
+
+  methods: {
+    pushLanguage(selectLanguage) {
+      this.deutsch = !this.deutsch;
+      this.italy = !this.italy;
+      this.persian = !this.persian;
+      this.france = !this.france;
+      this.spanish = !this.spanish;
+      this.english = !this.english;
+
+      if(this.deutsch){
+this.$router.push({
+
+path : "/",
+query:{
+
+
+
+  
+}
+
+
+
+})
+
+
+
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

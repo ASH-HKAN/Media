@@ -5,7 +5,7 @@
       <Language />
       <Level />
     </v-row>
-    <!-- <Categories /> -->
+    <Categories />
 
     <HomePlayer />
   </v-app>
