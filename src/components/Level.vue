@@ -18,7 +18,7 @@
           "
           @click="playTrack(100)"
         >
-          Eminem
+          A1
         </v-btn>
         <v-btn
           class="innerBox"
@@ -32,7 +32,7 @@
           "
           @click="playTrack(101)"
         >
-          Dua
+          A2
         </v-btn>
         <v-btn
           class="innerBox rightSide"
@@ -46,7 +46,7 @@
           "
           @click="playTrack(102)"
         >
-          Anchor
+          B1
         </v-btn>
       </v-col>
       <div class="divider"></div>
@@ -65,7 +65,7 @@
           "
           @click="playTrack(100)"
         >
-          Eminem
+          B2
         </v-btn>
         <v-btn
           class="innerBox rightSide"
@@ -78,7 +78,7 @@
             margin: 7px;
           "
         >
-          <div @click="playTrack(103)">English</div>
+          <div @click="playTrack(103)">C1</div>
         </v-btn>
         <v-btn
           class="innerBox rightSide"
@@ -91,7 +91,7 @@
             margin: 7px;
           "
         >
-          <v-list-item @click="playTrack(102)"> Anchor</v-list-item>
+          <v-list-item @click="playTrack(102)"> C2</v-list-item>
         </v-btn>
       </v-col>
     </v-row>
