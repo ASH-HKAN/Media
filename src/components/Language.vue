@@ -128,23 +128,11 @@ export default {
       this.spanish = !this.spanish;
       this.english = !this.english;
 
-      if(this.deutsch){
-this.$router.push({
-
-path : "/",
-query:{
-
-
-
-  
-}
-
-
-
-})
-
-
-
+      if (this.deutsch) {
+        this.$router.push({
+          path: "/",
+          query: {},
+        });
       }
     },
   },
