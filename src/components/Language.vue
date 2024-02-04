@@ -3,6 +3,7 @@
     class="d-flex flex-column align-center justify-end lang-box"
     fluid
   >
+    <language />
     <v-row justify="space-between" align="center">
       <v-row>
         <v-col cols="6">
@@ -22,7 +23,7 @@
         </v-col>
         <v-col cols="2">
           <v-btn
-            @click="pushLanguage"
+            @click="pushLanguage(666)"
             class="innerBox"
             style="
               background-color: #1e1e1e;
@@ -107,6 +108,7 @@
 </template>
 
 <script>
+import Language from "../components/Language.vue";
 export default {
   data() {
     return {
@@ -118,9 +120,14 @@ export default {
       english: false,
     };
   },
+  components: {
+    Language,
+  },
 
   methods: {
-    pushLanguage(selectLanguage) {
+    pushLanguage(trackCode) {
+      const track = this.tracks.find((track) => track.trackCode === trackCode);
+
       this.deutsch = !this.deutsch;
       this.italy = !this.italy;
       this.persian = !this.persian;
@@ -128,12 +135,24 @@ export default {
       this.spanish = !this.spanish;
       this.english = !this.english;
 
-      if (this.deutsch) {
+      if (track) {
         this.$router.push({
           path: "/",
-          query: {},
+          query: {
+            title: track.title,
+            audioPath: `file/${track.fileName}.mp3`,
+            // subPath: `file/${track.fileName}.lrc`,
+            duration: track.duration,
+          },
+          params: {},
         });
       }
+      console.log(track, "dsssssss");
+    },
+  },
+  computed: {
+    tracks() {
+      return this.$store.state.tracks;
     },
   },
 };
