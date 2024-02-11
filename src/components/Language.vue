@@ -1,11 +1,13 @@
 <template>
   <div>
-    <v-container class="d-flex flex-column align-center justify-end lang-box">
+    <v-container
+      class="d-flex flex-column align-center justify-end lang-box-right"
+    >
       <v-row justify="space-between" align="center">
         <v-row>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -21,7 +23,7 @@
           <v-col cols="2">
             <v-btn
               @click="pushLanguage(666)"
-              class="innerBox"
+              class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -39,7 +41,7 @@
         <v-row>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -54,7 +56,7 @@
           </v-col>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -72,7 +74,7 @@
         <v-row>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -87,7 +89,7 @@
           </v-col>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -103,12 +105,14 @@
         </v-row>
       </v-row>
     </v-container>
-    <v-container class="d-flex flex-column align-center justify-end lang-box1">
+    <v-container
+      class="d-flex flex-column align-center justify-end lang-box-left"
+    >
       <v-row justify="space-between" align="center">
         <v-row>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -118,13 +122,13 @@
                 margin-left: 20px;
               "
             >
-              Persisch
+              LEft
             </v-btn>
           </v-col>
           <v-col cols="2">
             <v-btn
               @click="pushLanguage(666)"
-              class="innerBox"
+              class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -142,7 +146,7 @@
         <v-row>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -157,7 +161,7 @@
           </v-col>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -175,7 +179,7 @@
         <v-row>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -190,7 +194,7 @@
           </v-col>
           <v-col cols="6">
             <v-btn
-              class="innerBox"
+              class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
                 border: 2px solid #d63c07;
@@ -261,17 +265,17 @@ export default {
 </script>
 
 <style scoped>
-.lang-box {
+.lang-box-right {
   margin-top: 470px;
-  margin-left: -360px; /* Adjust the left margin */
-  width: 400px; /* Adjust the width as needed */
+  margin-left: -460px; /* Adjust the left margin */
+  width: 440px; /* Adjust the width as needed */
   height: 230px;
   flex-shrink: 0;
   border-radius: 35px;
   background: #1e1e1e;
 }
 
-.innerBox {
+.innerBoxRight {
   border-radius: 8px; /* Adjusted border-radius */
   border: 2px solid #d63c07;
   flex-shrink: 0;
@@ -281,14 +285,24 @@ export default {
   margin-left: 40px; /* Adjusted margin */
 }
 
-.lang-box1 {
+.lang-box-left {
   margin-top: -230px;
   margin-left: -775px; /* Adjust the left margin */
 
-  width: 400px; /* Adjust the width as needed */
+  width: 300px; /* Adjust the width as needed */
   height: 230px;
   border-radius: 35px;
   /* border: 9px solid #000; */
   background: #1e1e1e;
+}
+
+.innerBoxLeft {
+  border-radius: 8px; /* Adjusted border-radius */
+  border: 2px solid #d63c07;
+  flex-shrink: 0;
+  background-color: #1e1e1e;
+  text-align: center;
+  color: rgb(11, 105, 186);
+  margin-left: 40px; /* Adjusted margin */
 }
 </style>
