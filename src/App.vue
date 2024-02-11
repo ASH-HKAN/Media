@@ -7,12 +7,17 @@
 </template>
 
 <script>
+import Level from "./components/Level.vue";
+import Language from "./components/Language.vue";
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  }),
+  components: {
+    Language,
+    Level,
+  },
+  data() {
+    return {};
+  },
 };
 </script>
 <style>

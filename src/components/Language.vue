@@ -16,14 +16,14 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 20px;
               "
-              @click="playTrack(101)"
+              @click="playTrack"
             >
               persian
             </v-btn>
           </v-col>
           <v-col cols="2">
             <v-btn
-              @click="pushLanguage(666)"
+              @click="handleLanguageClick()"
               class="innerBoxLeft"
               style="
                 background-color: #1e1e1e;
@@ -100,7 +100,7 @@
                 margin-left: 40px;
               "
             >
-              Spanish
+              italy
             </v-btn>
           </v-col>
         </v-row>
@@ -128,13 +128,6 @@ export default {
   methods: {
     pushLanguage(trackCode) {
       const track = this.tracks.find((track) => track.trackCode === trackCode);
-
-      this.deutsch = !this.deutsch;
-      this.italy = !this.italy;
-      this.persian = !this.persian;
-      this.france = !this.france;
-      this.spanish = !this.spanish;
-      this.english = !this.english;
 
       if (track) {
         this.$router.push({

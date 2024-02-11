@@ -41,36 +41,48 @@ export default new Vuex.Store({
         title: "ENGLISH-A1",
         duration: 393,
         fileName: "ENGLISH-A1",
+        trackCode: 104,
+
       },
       {
         Lesson: "English",
         title: "ENGLISH-A2",
         duration: 288,
         fileName: "ENGLISH-A2",
+        trackCode: 105,
+
       },
       {
         Lesson: "English",
         title: "ENGLISH-B1",
         duration: 231,
         fileName: "ENGLISH-B1",
+        trackCode: 106,
+
       },
       {
         Lesson: "English",
         title: "ENGLISH-B2",
         duration: 182,
         fileName: "ENGLISH-B2",
+        trackCode: 107,
+
       },
       {
         Lesson: "English",
         title: "ENGLISH-C1",
         duration: 165,
         fileName: "ENGLISH-C1",
+        trackCode: 108,
+
       },
       {
         Lesson: "English",
         title: "ENGLISH-C2",
         duration: 106,
         fileName: "ENGLISH-C2",
+        trackCode: 109,
+
       },
 
       {
@@ -78,6 +90,8 @@ export default new Vuex.Store({
         title: "Deutsch-A1",
         duration: 203,
         fileName: "Deutsch-A1",
+        trackCode: 110,
+
       },
 
       {
@@ -85,12 +99,16 @@ export default new Vuex.Store({
         title: "Deutsch-A2",
         duration: 71,
         fileName: "Deutsch-A2",
+        trackCode: 111,
+
       },
       {
         Lesson: "Deutsch",
         title: "Deutsch-B1",
         duration: 123,
         fileName: "Deutsch-B1",
+        trackCode: 112,
+
       },
 
       {
@@ -98,6 +116,8 @@ export default new Vuex.Store({
         title: "Deutsch-B2",
         duration: 156,
         fileName: "Deutsch-B2",
+        trackCode: 113,
+
       },
 
       {
@@ -105,6 +125,8 @@ export default new Vuex.Store({
         title: "Deutsch-C1",
         duration: 67,
         fileName: "Deutsch-C1",
+        trackCode: 600,
+
       },
 
       {
