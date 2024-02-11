@@ -5,7 +5,8 @@
       <div class="tt">
         <Categories />
       </div>
-      <LanguageAndLevel />
+      <Language />
+      <level />
       <div class="hp">
         <HomePlayer />
       </div>
@@ -16,7 +17,7 @@
 <script>
 import SideBar from "../components/SideBar.vue";
 import PlayList from "../components/Playlist.vue";
-import LanguageAndLevel from "../components/LanguageAndLevel.vue";
+import Language from "../components/Language.vue";
 import Level from "../components/Level.vue";
 import HomePlayer from "../components/HomePlayer.vue";
 import Categories from "../components/Categories.vue";
@@ -30,7 +31,7 @@ export default {
     HomePlayer,
     SideBar,
     PlayList,
-    LanguageAndLevel,
+    Language,
     Level,
     Categories,
   },

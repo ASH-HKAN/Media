@@ -1,98 +1,115 @@
 <template>
-  <v-container class="lang-box" >
-    <v-row justify="space-between" align="center">
-      <!-- Left Side Boxes -->
-      <v-col cols="4">
-        <v-btn
-          class="innerBox"
-          style="
-            background-color: #1e1e1e;
-            border: 2px solid #d63c07;
-            color: aliceblue;
-            padding: 16px;
-            border-radius: 20px;
-            margin: 7px;
-          "
-          @click="playTrack(100)"
-        >
-          A1
-        </v-btn>
-        <v-btn
-          class="innerBox"
-          style="
-            background-color: #1e1e1e;
-            border: 2px solid #d63c07;
-            color: aliceblue;
-            padding: 16px;
-            border-radius: 20px;
-            margin: 7px;
-          "
-          @click="playTrack(101)"
-        >
-          A2
-        </v-btn>
-        <v-btn
-          class="innerBox rightSide"
-          style="
-            background-color: #1e1e1e;
-            border: 2px solid #d63c07;
-            color: aliceblue;
-            padding: 16px;
-            border-radius: 20px;
-            margin: 7px;
-          "
-          @click="playTrack(102)"
-        >
-          B1
-        </v-btn>
-      </v-col>
-      <div class="divider"></div>
+  <div>
+    <v-container
+      class="d-flex flex-column align-center justify-end lang-box-right"
+    >
+      <v-row justify="space-between" align="center">
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBoxRight"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 8px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 20px;
+              "
+              @click="playTrack(100)"
+            >
+              A1
+            </v-btn>
+          </v-col>
+          <v-col cols="2">
+            <v-btn
+              class="innerBoxRight"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+              @click="playTrack(101)"
+            >
+              A2
+            </v-btn>
+          </v-col>
+        </v-row>
 
-      <!-- Right Side Boxes -->
-      <v-col cols="5">
-        <v-btn
-          class="innerBox rightSide"
-          style="
-            background-color: #1e1e1e;
-            border: 2px solid #d63c07;
-            color: aliceblue;
-            padding: 16px;
-            border-radius: 20px;
-            margin: 7px;
-          "
-          @click="playTrack(100)"
-        >
-          B2
-        </v-btn>
-        <v-btn
-          class="innerBox rightSide"
-          style="
-            background-color: #1e1e1e;
-            border: 2px solid #d63c07;
-            color: aliceblue;
-            padding: 16px;
-            border-radius: 20px;
-            margin: 7px;
-          "
-        >
-          <div @click="playTrack(103)">C1</div>
-        </v-btn>
-        <v-btn
-          class="innerBox rightSide"
-          style="
-            background-color: #1e1e1e;
-            border: 2px solid #d63c07;
-            color: aliceblue;
-            padding: 16px;
-            border-radius: 20px;
-            margin: 7px;
-          "
-        >
-          <v-list-item @click="playTrack(102)"> C2</v-list-item>
-        </v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBoxRight"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 20px;
+              "
+              @click="playTrack(102)"
+            >
+              B1
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              class="innerBoxRight"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+              @click="playTrack(100)"
+            >
+              B2
+            </v-btn>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBoxRight"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+              @click="playTrack(103)"
+              >C1
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              class="innerBoxRight"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+              @click="playTrack(102)"
+            >
+              C2
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 
@@ -141,15 +158,24 @@ export default {
 
 
 <style scoped>
-.lang-box {
-  margin-top: 547px;
-  margin-left: -4040px; /* Adjust the left margin */
-  width: 402px;
-  height: 200px;
+.lang-box-right {
+  margin-top: 470px;
+  margin-left: -460px; /* Adjust the left margin */
+  width: 440px; /* Adjust the width as needed */
+  height: 230px;
   flex-shrink: 0;
   border-radius: 35px;
-  border: 9px solid #000;
   background: #1e1e1e;
+}
+
+.innerBoxRight {
+  border-radius: 8px; /* Adjusted border-radius */
+  border: 2px solid #d63c07;
+  flex-shrink: 0;
+  background-color: #1e1e1e;
+  text-align: center;
+  color: rgb(11, 105, 186);
+  margin-left: 40px; /* Adjusted margin */
 }
 
 .divider {
