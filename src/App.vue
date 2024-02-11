@@ -15,3 +15,9 @@ export default {
   }),
 };
 </script>
+<style>
+.v-application--wrap {
+  min-height: unset !important;
+  flex-direction: unset !important; /* or whatever initial value you prefer */
+}
+</style>

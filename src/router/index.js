@@ -49,9 +49,9 @@ const routes = [
 
   {
 
-    path: '/level',
-    name: 'Level',
-    component: Level
+    path: '/language',
+    name: 'language',
+    component: Language
 
   },
   {

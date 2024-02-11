@@ -2,12 +2,14 @@
   <v-app>
     <SideBar />
     <v-row>
+      <div class="tt">
+        <Categories />
+      </div>
       <Language />
-      <Level />
+      <div class="hp">
+          <HomePlayer />
+        </div>
     </v-row>
-    <Categories />
-
-    <HomePlayer />
   </v-app>
 </template>
 
@@ -44,5 +46,13 @@ export default {
 }
 body {
   background-color: #18181d;
+}
+
+.tt {
+  margin-top: 239px;
+}
+
+.hp {
+  margin-left: -701px;
 }
 </style>

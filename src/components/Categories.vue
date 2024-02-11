@@ -1,6 +1,6 @@
 <template>
   <v-app class="main-app">
-    <v-container fluid>
+    <div class="ttt">
       <v-row class="cat-box">
         <v-col v-for="(box, cat) in boxes" :key="cat">
           <v-card
@@ -12,7 +12,7 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
+    </div>
   </v-app>
 </template>
  <script>
@@ -39,6 +39,7 @@ export default {
   flex-shrink: 0;
   border-radius: 35px;
   background: #1e1e1e;
+  margin-right: 20px;
 }
 
 .small-box {
@@ -49,5 +50,9 @@ export default {
 }
 .hover {
   transform: scale(1.1);
+}
+
+.ttt {
+  margin-left: 40px;
 }
 </style>

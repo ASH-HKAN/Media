@@ -1,11 +1,5 @@
 <template>
-  <v-navigation-drawer
-    app
-    color="gray"
-    dark
-    class="sideBar flex"
-    :clipped="isClipped"
-  >
+  <v-navigation-drawer app color="gray" dark class="sideBar flex" width="300">
     <h4 class="mt-6 ml-5 white--text">Menu</h4>
 
     <v-list flat dense class="mt-5">

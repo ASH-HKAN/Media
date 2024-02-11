@@ -1,110 +1,212 @@
 <template>
-  <v-container
-    class="d-flex flex-column align-center justify-end lang-box"
-    fluid
-  >
-    <language />
-    <v-row justify="space-between" align="center">
-      <v-row>
-        <v-col cols="6">
-          <v-btn
-            class="innerBox"
-            style="
-              background-color: #1e1e1e;
-              border: 2px solid #d63c07;
-              color: aliceblue;
-              padding: 8px; /* Adjusted padding */
-              border-radius: 8px; /* Adjusted border-radius */
-              margin-left: 20px;
-            "
-          >
-            Persisch
-          </v-btn>
-        </v-col>
-        <v-col cols="2">
-          <v-btn
-            @click="pushLanguage(666)"
-            class="innerBox"
-            style="
-              background-color: #1e1e1e;
-              border: 2px solid #d63c07;
-              color: aliceblue;
-              padding: 12px; /* Adjusted padding */
-              border-radius: 8px; /* Adjusted border-radius */
-              margin-left: 40px;
-            "
-          >
-            Deutsch
-          </v-btn>
-        </v-col>
-      </v-row>
+  <div>
+    <v-container class="d-flex flex-column align-center justify-end lang-box">
+      <v-row justify="space-between" align="center">
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 8px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 20px;
+              "
+            >
+              Persisch
+            </v-btn>
+          </v-col>
+          <v-col cols="2">
+            <v-btn
+              @click="pushLanguage(666)"
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              Deutsch
+            </v-btn>
+          </v-col>
+        </v-row>
 
-      <v-row>
-        <v-col cols="6">
-          <v-btn
-            class="innerBox"
-            style="
-              background-color: #1e1e1e;
-              border: 2px solid #d63c07;
-              color: aliceblue;
-              padding: 12px; /* Adjusted padding */
-              border-radius: 8px; /* Adjusted border-radius */
-              margin-left: 20px;
-            "
-          >
-            France
-          </v-btn>
-        </v-col>
-        <v-col cols="6">
-          <v-btn
-            class="innerBox"
-            style="
-              background-color: #1e1e1e;
-              border: 2px solid #d63c07;
-              color: aliceblue;
-              padding: 12px; /* Adjusted padding */
-              border-radius: 8px; /* Adjusted border-radius */
-              margin-left: 40px;
-            "
-          >
-            English
-          </v-btn>
-        </v-col>
-      </v-row>
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 20px;
+              "
+            >
+              France
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              English
+            </v-btn>
+          </v-col>
+        </v-row>
 
-      <v-row>
-        <v-col cols="6">
-          <v-btn
-            style="
-              background-color: #1e1e1e;
-              border: 2px solid #d63c07;
-              color: aliceblue;
-              padding: 12px; /* Adjusted padding */
-              border-radius: 8px; /* Adjusted border-radius */
-              margin-left: 30px;
-            "
-          >
-            Italy
-          </v-btn>
-        </v-col>
-        <v-col cols="6">
-          <v-btn
-            class="innerBox"
-            style="
-              background-color: #1e1e1e;
-              border: 2px solid #d63c07;
-              color: aliceblue;
-              padding: 12px; /* Adjusted padding */
-              border-radius: 8px; /* Adjusted border-radius */
-              margin-left: 40px;
-            "
-          >
-            Spanish
-          </v-btn>
-        </v-col>
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              Spanish
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              Spanish
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-row>
-    </v-row>
-  </v-container>
+    </v-container>
+    <v-container class="d-flex flex-column align-center justify-end lang-box1">
+      <v-row justify="space-between" align="center">
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 8px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 20px;
+              "
+            >
+              Persisch
+            </v-btn>
+          </v-col>
+          <v-col cols="2">
+            <v-btn
+              @click="pushLanguage(666)"
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              Deutsch
+            </v-btn>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 20px;
+              "
+            >
+              France
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              English
+            </v-btn>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              Spanish
+            </v-btn>
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+              class="innerBox"
+              style="
+                background-color: #1e1e1e;
+                border: 2px solid #d63c07;
+                color: aliceblue;
+                padding: 12px; /* Adjusted padding */
+                border-radius: 8px; /* Adjusted border-radius */
+                margin-left: 40px;
+              "
+            >
+              Spanish
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -160,13 +262,12 @@ export default {
 
 <style scoped>
 .lang-box {
-  margin-top: 548px;
-  margin-left: 20px; /* Adjust the left margin */
-  width: 300px; /* Adjust the width as needed */
-  height: 200px;
+  margin-top: 470px;
+  margin-left: -360px; /* Adjust the left margin */
+  width: 400px; /* Adjust the width as needed */
+  height: 230px;
   flex-shrink: 0;
   border-radius: 35px;
-  border: 9px solid #000;
   background: #1e1e1e;
 }
 
@@ -177,6 +278,17 @@ export default {
   background-color: #1e1e1e;
   text-align: center;
   color: rgb(11, 105, 186);
-  margin-left: 15px; /* Adjusted margin */
+  margin-left: 40px; /* Adjusted margin */
+}
+
+.lang-box1 {
+  margin-top: -230px;
+  margin-left: -775px; /* Adjust the left margin */
+
+  width: 400px; /* Adjust the width as needed */
+  height: 230px;
+  border-radius: 35px;
+  /* border: 9px solid #000; */
+  background: #1e1e1e;
 }
 </style>

@@ -9,7 +9,7 @@
         />
       </v-main>
       <v-footer app>
-        <v-container fluid>
+        <v-container>
           <v-div class="d-flex flex-column justify-space-between align-center">
             <v-row>
               <v-col
@@ -174,7 +174,6 @@ export default {
     playPause() {
       this.isPlaying = !this.isPlaying;
       if (this.isPlaying) {
-        
         this.audioElement.src = this.currentTrack.audioPath;
         this.audioElement.play();
         this.audioElement.currentTime = this.currentTime;
