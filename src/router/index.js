@@ -4,7 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import Player from "../components/Player.vue";
 import Playlist from "../components/Playlist";
 // import Explor from "../components/Explor.vue";
-import Language from "../components/Language.vue";
+import LanguageAndLevel from "../components/LanguageAndLevel.vue";
 import Level from "../components//Level.vue";
 import homePlayer from "../components/HomePlayer.vue";
 import categories from "../components/Categories.vue";
@@ -47,13 +47,7 @@ const routes = [
   //   component: Explor
   // },
 
-  {
 
-    path: '/language',
-    name: 'language',
-    component: Language
-
-  },
   {
 
     path: '/hP',

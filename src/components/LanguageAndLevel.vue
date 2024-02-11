@@ -16,13 +16,13 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 20px;
               "
+              @click="playTrack(100)"
             >
-              Persisch
+              A1
             </v-btn>
           </v-col>
           <v-col cols="2">
             <v-btn
-              @click="pushLanguage(666)"
               class="innerBoxRight"
               style="
                 background-color: #1e1e1e;
@@ -32,8 +32,9 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 40px;
               "
+              @click="playTrack(101)"
             >
-              Deutsch
+              A2
             </v-btn>
           </v-col>
         </v-row>
@@ -50,8 +51,9 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 20px;
               "
+              @click="playTrack(102)"
             >
-              France
+              B1
             </v-btn>
           </v-col>
           <v-col cols="6">
@@ -65,8 +67,9 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 40px;
               "
+              @click="playTrack(100)"
             >
-              English
+              B2
             </v-btn>
           </v-col>
         </v-row>
@@ -83,8 +86,8 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 40px;
               "
-            >
-              Spanish
+              @click="playTrack(103)"
+              >C1
             </v-btn>
           </v-col>
           <v-col cols="6">
@@ -98,8 +101,9 @@
                 border-radius: 8px; /* Adjusted border-radius */
                 margin-left: 40px;
               "
+              @click="playTrack(102)"
             >
-              Spanish
+              C2
             </v-btn>
           </v-col>
         </v-row>
@@ -214,7 +218,7 @@
 </template>
 
 <script>
-import Language from "../components/Language.vue";
+import Language from "./LanguageAndLevel.vue";
 export default {
   data() {
     return {
@@ -224,6 +228,9 @@ export default {
       france: false,
       spanish: false,
       english: false,
+      isPlaying: false,
+      currentTime: 0,
+      currentTrackIndex: 0,
     };
   },
   components: {
@@ -254,6 +261,28 @@ export default {
         });
       }
       console.log(track, "dsssssss");
+    },
+    playTrack(trackCode) {
+      const track = this.tracks.find((track) => track.trackCode === trackCode);
+
+      if (track) {
+        this.$router.push({
+          path: "/",
+          query: {
+            title: track.title,
+            audioPath: `file/${track.fileName}.mp3`,
+            subPath: `file/${track.fileName}.lrc`,
+            duration: track.duration,
+          },
+          params: {},
+        });
+      }
+    },
+
+    formatDuration(duration) {
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
     },
   },
   computed: {
