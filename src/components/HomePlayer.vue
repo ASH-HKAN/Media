@@ -1,114 +1,118 @@
 <template>
-  <v-app>
-    <div class="ss">
-      <!-- it fill be -->
-      <img class="img" src="alan.jpg" alt="Image Description" />
-      <p class="additional-text">{{ currentTrack.title }}</p>
-      <p class="additional-text2">Studieren - C1</p>
-      <!-- it fill be -->
-      <v-row style="color: aliceblue; margin-left: 290px">
-        {{ this.timeFormat }}
-      </v-row>
-      <v-row class="text-center">
-        <v-col>
-          <v-slider
-            color="#D63C07"
-            :max="currentTrack.duration"
-            v-model="currentTime"
-            @change="seek"
-          ></v-slider>
-          <!-- vol -->
-          <v-btn
-            @click="toggleVolume"
-            :style="{
-              width: '0px',
-              height: '0px',
-              backgroundColor: 'transparent',
-              color: '#fff',
-            }"
-          >
-            <v-icon>
-              {{ volIcon ? "mdi-volume-high" : "mdi-volume-off" }}</v-icon
+  <div>
+    <v-app>
+      <div class="ss">
+        <!-- it fill be -->
+        <img class="img" src="alan.jpg" alt="Image Description" />
+        <p class="additional-text">{{ currentTrack.title }}</p>
+        <p class="additional-text2">Studieren - C1</p>
+        <!-- it fill be -->
+        <v-row style="color: aliceblue; margin-left: 290px">
+          {{ this.timeFormat }}
+        </v-row>
+        <v-row class="text-center">
+          <v-col>
+            <v-slider
+              color="#D63C07"
+              :max="currentTrack.duration"
+              v-model="currentTime"
+              @change="seek"
+            ></v-slider>
+            <!-- vol -->
+            <v-btn
+              @click="toggleVolume"
+              :style="{
+                width: '0px',
+                height: '0px',
+                backgroundColor: 'transparent',
+                color: '#fff',
+              }"
             >
-          </v-btn>
-          <input
-            v-if="volIcon"
-            v-model="currentVolume"
-            @input="setVolume"
-            type="range"
-            min="0"
-            max="100"
-          />
+              <v-icon>
+                {{ volIcon ? "mdi-volume-high" : "mdi-volume-off" }}</v-icon
+              >
+            </v-btn>
+            <input
+              v-if="volIcon"
+              v-model="currentVolume"
+              @input="setVolume"
+              type="range"
+              min="0"
+              max="100"
+            />
 
-          <!-- vol -->
+            <!-- vol -->
 
-          <br />
-          <br />
-          <br />
+            <br />
+            <br />
+            <br />
 
-          <!-- tekrar nemishe -->
-          <v-btn
-            @click="enableLoop"
-            type="button"
-            :style="{
-              width: '0px',
-              height: '0px',
-              backgroundColor: 'transparent',
-              color: '#D63C07',
-            }"
-          >
-            <v-icon>
-              {{ this.repeater ? "mdi-repeat-once" : "mdi-repeat-off" }}</v-icon
+            <!-- tekrar nemishe -->
+            <v-btn
+              @click="enableLoop"
+              type="button"
+              :style="{
+                width: '0px',
+                height: '0px',
+                backgroundColor: 'transparent',
+                color: '#D63C07',
+              }"
             >
-          </v-btn>
-          <!-- back -->
-          <v-btn
-            @click="backward"
-            :style="{
-              width: '0px',
-              height: '0px',
-              backgroundColor: 'transparent',
-              color: '#D63C07',
-            }"
-          >
-            <v-icon> mdi-rewind </v-icon>
-          </v-btn>
-          <!-- back -->
+              <v-icon>
+                {{
+                  this.repeater ? "mdi-repeat-once" : "mdi-repeat-off"
+                }}</v-icon
+              >
+            </v-btn>
+            <!-- back -->
+            <v-btn
+              @click="backward"
+              :style="{
+                width: '0px',
+                height: '0px',
+                backgroundColor: 'transparent',
+                color: '#D63C07',
+              }"
+            >
+              <v-icon> mdi-rewind </v-icon>
+            </v-btn>
+            <!-- back -->
 
-          <!-- p/P -->
-          <v-btn
-            @click="playPause"
-            icon
-            :style="{
-              borderRadius: '50%',
-              width: '56px',
-              height: '56px',
-              backgroundColor: 'transparent',
-              border: '2px solid #fff',
-              color: '#D63C07',
-            }"
-            @mouseover="hovered = true"
-            @mouseleave="hovered = false"
-          >
-            <v-icon> {{ isPlaying ? "mdi-pause " : "mdi-play" }} </v-icon>
-          </v-btn>
-          <!-- p/P -->
+            <!-- p/P -->
+            <v-btn
+              @click="playPause"
+              icon
+              :style="{
+                borderRadius: '50%',
+                width: '56px',
+                height: '56px',
+                backgroundColor: 'transparent',
+                border: '2px solid #fff',
+                color: '#D63C07',
+              }"
+              @mouseover="hovered = true"
+              @mouseleave="hovered = false"
+            >
+              <v-icon> {{ isPlaying ? "mdi-pause " : "mdi-play" }} </v-icon>
+            </v-btn>
+            <!-- p/P -->
 
-          <v-btn
-            :style="{
-              width: '0px',
-              height: '0px',
-              backgroundColor: 'transparent',
-              color: '#D63C07',
-            }"
-            @click="forward"
-          >
-            <v-icon> mdi-fast-forward</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-    </div>
-  </v-app>
+            <v-btn
+              :style="{
+                width: '0px',
+                height: '0px',
+                backgroundColor: 'transparent',
+                color: '#D63C07',
+              }"
+              @click="forward"
+            >
+              <v-icon> mdi-fast-forward</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </div>
+    </v-app>
+  </div>
 </template>
 
   
@@ -232,7 +236,6 @@ export default {
   flex-shrink: 0;
   border-radius: 30px;
   background: #111114;
-  margin-left: 740px;
   border: 9px solid #000;
   background: #111114;
 }

@@ -7,8 +7,8 @@
       </div>
       <Language />
       <div class="hp">
-          <HomePlayer />
-        </div>
+        <HomePlayer />
+      </div>
     </v-row>
   </v-app>
 </template>
@@ -53,6 +53,7 @@ body {
 }
 
 .hp {
-  margin-left: -701px;
+  margin-top: 150px;
+  margin-left :10px;
 }
 </style>
